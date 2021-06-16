@@ -1,4 +1,5 @@
-﻿using CoursesPlatform.Models.Users;
+﻿using CoursesPlatform.Models.Teacher.Course;
+using CoursesPlatform.Models.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,8 @@ namespace CoursesPlatform.Models
 {
     public class ApplicationContext : IdentityDbContext<User>
     {
-
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseCategory> CourseCategories { get; set; }
 
         public ApplicationContext(DbContextOptions options)
             : base(options) { }

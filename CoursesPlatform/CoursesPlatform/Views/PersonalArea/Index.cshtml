@@ -2,25 +2,12 @@
 
 @if(User.IsInRole("employee"))
 {
-    <h3>Обработка</h3>
-    <div>
-        <a asp-action="Index" asp-controller="ProductContainers">Продукты</a>
-    </div>
-    <div>
-        <a asp-action="Index" asp-controller="ProductCategories">Категории</a>
-    </div>   
-    <div>
-        <a asp-action="OrdersToCollect" asp-controller="OrderProcessing">Заказы к сбору</a>
-    </div>   
-    <hr>
+    <h3>Рабочий</h3>
 }
-@if(User.IsInRole("delivery"))
+@if(User.IsInRole("teacher"))
 {
-    <h3>Доставка</h3>
-    <div>
-        <a asp-action="OrdersToDelivery" asp-controller="OrderProcessing">Доставка</a>
-    </div>   
-    <hr>
+    <h3>Преподаватель</h3>
+    
 }
 @if(User.IsInRole("admin"))
 {
@@ -33,8 +20,6 @@
     </div>   
     <hr>
 }
-
-<a asp-action="OrderHistory" asp-controller="Orders">История заказов</a>
 
 <a asp-area="" asp-controller="PersonalArea" asp-action="PersonalData">личные данные</a>
 

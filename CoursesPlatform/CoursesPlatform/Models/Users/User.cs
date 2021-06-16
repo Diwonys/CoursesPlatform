@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CoursesPlatform.Models.Teacher.Course;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,11 @@ namespace CoursesPlatform.Models.Users
 {
     public class User : IdentityUser
     {
+        public List<Course> Courses { get; set; }
+
         public User()
         {
+            Courses = new List<Course>();
         }
     }
 }
