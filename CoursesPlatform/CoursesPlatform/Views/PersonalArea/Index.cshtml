@@ -1,0 +1,43 @@
+<h2>Личный кабинет</h2>
+
+@if(User.IsInRole("employee"))
+{
+    <h3>Обработка</h3>
+    <div>
+        <a asp-action="Index" asp-controller="ProductContainers">Продукты</a>
+    </div>
+    <div>
+        <a asp-action="Index" asp-controller="ProductCategories">Категории</a>
+    </div>   
+    <div>
+        <a asp-action="OrdersToCollect" asp-controller="OrderProcessing">Заказы к сбору</a>
+    </div>   
+    <hr>
+}
+@if(User.IsInRole("delivery"))
+{
+    <h3>Доставка</h3>
+    <div>
+        <a asp-action="OrdersToDelivery" asp-controller="OrderProcessing">Доставка</a>
+    </div>   
+    <hr>
+}
+@if(User.IsInRole("admin"))
+{
+    <h3>Администрирование</h3>
+    <div>
+        <a asp-action="Index" asp-controller="Roles">Роли</a>
+    </div>   
+    <div>
+        <a asp-action="Index" asp-controller="Users">Пользователи</a>
+    </div>   
+    <hr>
+}
+
+<a asp-action="OrderHistory" asp-controller="Orders">История заказов</a>
+
+<a asp-area="" asp-controller="PersonalArea" asp-action="PersonalData">личные данные</a>
+
+<form method="post" asp-controller="Account" asp-action="Logout">
+    <input type="submit" value="Выход" />
+</form>

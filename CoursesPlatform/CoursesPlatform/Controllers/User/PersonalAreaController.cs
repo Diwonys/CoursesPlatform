@@ -11,7 +11,7 @@ namespace CoursesPlatform.Controllers
     [Authorize]
     public class PersonalAreaController : Controller
     {
-        public IActionResult Index => View();
+        public IActionResult Index() => View();
         public IActionResult PersonalData() => View();
     }
 }

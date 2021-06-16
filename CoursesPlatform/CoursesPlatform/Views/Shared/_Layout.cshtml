@@ -29,6 +29,7 @@
             </div>
         </nav>
     </header>
+    
     @if (!User.Identity.IsAuthenticated)
     {
         <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Login">

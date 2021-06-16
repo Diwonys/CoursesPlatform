@@ -1,0 +1,12 @@
+Личные данные пользователя
+
+<p>личные данные</p>
+
+<p>Email</p>
+<p>@User.Identity.Name</p>
+
+<a asp-controller="Account" asp-action="ForgotPassword">ChangePassword</a>
+
+<form method="post" asp-controller="Account" asp-action="Logout">
+    <input type="submit" value="Выход" />
+</form>
