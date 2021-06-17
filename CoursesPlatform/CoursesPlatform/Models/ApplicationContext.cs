@@ -1,4 +1,5 @@
 ﻿using CoursesPlatform.Models.Teacher.Course;
+using CoursesPlatform.Models.Teacher.Course.Elements;
 using CoursesPlatform.Models.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,11 @@ namespace CoursesPlatform.Models
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        
+        public DbSet<ContentElement> ContentElements { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Paragraph> Paragraphs { get; set; }
 
         public ApplicationContext(DbContextOptions options)
             : base(options) { }

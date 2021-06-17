@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CoursesPlatform.Models.Teacher.Course.Elements
 {
-    public class Paragraph : ContentElement
+    public class Row
     {
-        public List<Row> Rows { get; set; }
+        public int Id { get; set; }
+        public string Text { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using CoursesPlatform.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoursesPlatform.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210617091415_RemoveReferenceContentElementLesson")]
+    partial class RemoveReferenceContentElementLesson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,55 +67,6 @@ namespace CoursesPlatform.Migrations
                     b.ToTable("CourseCategories");
                 });
 
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.ContentElement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Height")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LessonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Width")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LessonId");
-
-                    b.ToTable("ContentElements");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("ContentElement");
-                });
-
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.Row", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ParagraphId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParagraphId");
-
-                    b.ToTable("Row");
-                });
-
             modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Lesson", b =>
                 {
                     b.Property<int>("Id")
@@ -128,7 +81,7 @@ namespace CoursesPlatform.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lesson");
                 });
 
             modelBuilder.Entity("CoursesPlatform.Models.Users.User", b =>
@@ -327,26 +280,6 @@ namespace CoursesPlatform.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.Image", b =>
-                {
-                    b.HasBaseType("CoursesPlatform.Models.Teacher.Course.Elements.ContentElement");
-
-                    b.Property<byte[]>("ByteImage")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("Image");
-                });
-
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.Paragraph", b =>
-                {
-                    b.HasBaseType("CoursesPlatform.Models.Teacher.Course.Elements.ContentElement");
-
-                    b.HasDiscriminator().HasValue("Paragraph");
-                });
-
             modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Course", b =>
                 {
                     b.HasOne("CoursesPlatform.Models.Teacher.Course.CourseCategory", "CourseCategory")
@@ -360,24 +293,6 @@ namespace CoursesPlatform.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("CourseCategory");
-                });
-
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.ContentElement", b =>
-                {
-                    b.HasOne("CoursesPlatform.Models.Teacher.Course.Lesson", "Lesson")
-                        .WithMany("Content")
-                        .HasForeignKey("LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Lesson");
-                });
-
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.Row", b =>
-                {
-                    b.HasOne("CoursesPlatform.Models.Teacher.Course.Elements.Paragraph", null)
-                        .WithMany("Rows")
-                        .HasForeignKey("ParagraphId");
                 });
 
             modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Lesson", b =>
@@ -452,19 +367,9 @@ namespace CoursesPlatform.Migrations
                     b.Navigation("Courses");
                 });
 
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Lesson", b =>
-                {
-                    b.Navigation("Content");
-                });
-
             modelBuilder.Entity("CoursesPlatform.Models.Users.User", b =>
                 {
                     b.Navigation("Courses");
-                });
-
-            modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.Paragraph", b =>
-                {
-                    b.Navigation("Rows");
                 });
 #pragma warning restore 612, 618
         }

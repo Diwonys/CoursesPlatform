@@ -7,7 +7,10 @@
 @if(User.IsInRole("teacher"))
 {
     <h3>Преподаватель</h3>
-    
+    <div>
+        <a asp-action="Index" asp-controller="Courses">Курсы</a>
+        <a asp-action="Index" asp-controller="CourseCategories">Категории курсов</a>
+    </div>   
 }
 @if(User.IsInRole("admin"))
 {
