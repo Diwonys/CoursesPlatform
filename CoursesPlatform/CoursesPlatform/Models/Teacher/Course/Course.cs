@@ -1,4 +1,5 @@
 ﻿using CoursesPlatform.Models.Teacher.Course;
+using CoursesPlatform.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,9 @@ namespace CoursesPlatform.Models.Teacher.Course
         {
             Lessons = new List<Lesson>();
         }
+
+        public string UserId { get; set; }
+        public User User { get; set; }
 
         public int CourseCategoryId { get; set; }
         public CourseCategory CourseCategory { get; set; }

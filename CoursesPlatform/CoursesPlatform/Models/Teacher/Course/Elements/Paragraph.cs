@@ -8,6 +8,6 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
 {
     public class Paragraph : ContentElement
     {
-        public List<Row> Rows { get; set; }
+        public string Text { get; set; }
     }
 }

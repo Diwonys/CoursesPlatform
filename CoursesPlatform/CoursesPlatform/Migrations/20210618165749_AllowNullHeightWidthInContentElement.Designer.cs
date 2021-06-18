@@ -4,14 +4,16 @@ using CoursesPlatform.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoursesPlatform.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210618165749_AllowNullHeightWidthInContentElement")]
+    partial class AllowNullHeightWidthInContentElement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -338,13 +340,11 @@ namespace CoursesPlatform.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CoursesPlatform.Models.Users.User", "User")
+                    b.HasOne("CoursesPlatform.Models.Users.User", null)
                         .WithMany("Courses")
                         .HasForeignKey("UserId");
 
                     b.Navigation("CourseCategory");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CoursesPlatform.Models.Teacher.Course.Elements.ContentElement", b =>

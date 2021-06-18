@@ -1,0 +1,44 @@
+﻿@model CoursesPlatform.Models.Teacher.Course.Lesson
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Lesson</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>        
+            
+            <div id="anchorElement"></div>
+
+            <input type="button" value="add Text" 
+            onclick='addElementToPage(`<textarea class="inputElement" name="Elements[0].Text"></textarea>`)'>
+            @* <input class="inputElement" type="text" name="Elements[].Text"/> *@
+            
+            <input type="button" value="add image" 
+            onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[0].Image"/>`)'>
+
+            <div>
+                <input type="number" name="courseId" value='@ViewData["CourseId"]' hidden>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<script src="~/js/elementsController.js" asp-append-version="true"></script>

@@ -11,7 +11,7 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
     public class Image : ContentElement
     {
         public string Name { get; set; }
-        public byte[] ByteImage { get; set; }
+        public byte[] ByteImage { get; private set; }
 
         [NotMapped]
         private IFormFile _image;

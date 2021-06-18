@@ -7,36 +7,31 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CoursesPlatform.Models;
 using CoursesPlatform.Models.Teacher.Course;
-using Microsoft.AspNetCore.Authorization;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
-using CoursesPlatform.Models.Users;
+using CoursesPlatform.Models.Teacher.Course.Elements.ViewModels;
+using CoursesPlatform.Models.Teacher.Course.Elements;
 
-namespace CoursesPlatform.Controllers
+namespace CoursesPlatform.Controllers.Teacher
 {
-    [Authorize(Roles = "teacher")]
-    public class CoursesController : Controller
+    public class LessonsController : Controller
     {
         private readonly ApplicationContext _context;
 
-        public UserManager<User> _userManager { get; }
-
-        public CoursesController(ApplicationContext context, UserManager<User> userManager)
+        public LessonsController(ApplicationContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
-        
-        // GET: Courses
-        public async Task<IActionResult> Index()
+
+        // GET: Lessons
+        public async Task<IActionResult> Index(int? courseId)
         {
-            var user = await _userManager.GetUserAsync(User);
-            var applicationContext = _context.Courses.Include(c => c.CourseCategory)
-                .Where(x=>x.UserId.Equals(user.Id));
+            var applicationContext = _context.Lessons
+                .Include(l => l.Course)
+                .Where(l => l.CourseId.Equals(courseId));
+            ViewData["CourseId"] = courseId;
             return View(await applicationContext.ToListAsync());
         }
 
-        // GET: Courses/Details/5
+        // GET: Lessons/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,47 +39,48 @@ namespace CoursesPlatform.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
-                .Include(c => c.CourseCategory)
+            var lesson = await _context.Lessons
+                .Include(l => l.Course)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (course == null)
+            if (lesson == null)
             {
                 return NotFound();
             }
 
-            return View(course);
+            return View(lesson);
         }
 
-        // GET: Courses/Create
-        public IActionResult Create()
+        // GET: Lessons/Create
+        public IActionResult Create(int? coureseId)
         {
-            ViewData["CourseCategoryId"] = new SelectList(_context.CourseCategories, "Id", "Name");
+            ViewData["CourseId"] = coureseId;
             return View();
         }
 
-        // POST: Courses/Create
+        // POST: Lessons/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,CreationDate,CourseCategoryId")] Course course)
+        public async Task<IActionResult> Create(ContentViewModel content, int? courseId)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && courseId != null)
             {
-                var user = await _userManager.GetUserAsync(User);
+                var lesson = new Lesson
+                {
+                    Content = content.GetLesson(),
+                    CourseId = courseId.Value,
+                };
 
-                course.CreationDate = DateTime.Now;
-                course.UserId = user.Id;
-
-                _context.Add(course);
+                _context.Add(lesson);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseCategoryId"] = new SelectList(_context.CourseCategories, "Id", "Name", course.CourseCategoryId);
-            return View(course);
+            ViewData["CourseId"] = courseId;
+            return View();
         }
 
-        // GET: Courses/Edit/5
+        // GET: Lessons/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,23 +88,23 @@ namespace CoursesPlatform.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses.FindAsync(id);
-            if (course == null)
+            var lesson = await _context.Lessons.FindAsync(id);
+            if (lesson == null)
             {
                 return NotFound();
             }
-            ViewData["CourseCategoryId"] = new SelectList(_context.CourseCategories, "Id", "Name", course.CourseCategoryId);
-            return View(course);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id", lesson.CourseId);
+            return View(lesson);
         }
 
-        // POST: Courses/Edit/5
+        // POST: Lessons/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,CreationDate,CourseCategoryId")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CourseId")] Lesson lesson)
         {
-            if (id != course.Id)
+            if (id != lesson.Id)
             {
                 return NotFound();
             }
@@ -117,12 +113,12 @@ namespace CoursesPlatform.Controllers
             {
                 try
                 {
-                    _context.Update(course);
+                    _context.Update(lesson);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CourseExists(course.Id))
+                    if (!LessonExists(lesson.Id))
                     {
                         return NotFound();
                     }
@@ -133,11 +129,11 @@ namespace CoursesPlatform.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseCategoryId"] = new SelectList(_context.CourseCategories, "Id", "Name", course.CourseCategoryId);
-            return View(course);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id", lesson.CourseId);
+            return View(lesson);
         }
 
-        // GET: Courses/Delete/5
+        // GET: Lessons/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,31 +141,31 @@ namespace CoursesPlatform.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
-                .Include(c => c.CourseCategory)
+            var lesson = await _context.Lessons
+                .Include(l => l.Course)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (course == null)
+            if (lesson == null)
             {
                 return NotFound();
             }
 
-            return View(course);
+            return View(lesson);
         }
 
-        // POST: Courses/Delete/5
+        // POST: Lessons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var course = await _context.Courses.FindAsync(id);
-            _context.Courses.Remove(course);
+            var lesson = await _context.Lessons.FindAsync(id);
+            _context.Lessons.Remove(lesson);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CourseExists(int id)
+        private bool LessonExists(int id)
         {
-            return _context.Courses.Any(e => e.Id == id);
+            return _context.Lessons.Any(e => e.Id == id);
         }
     }
 }
