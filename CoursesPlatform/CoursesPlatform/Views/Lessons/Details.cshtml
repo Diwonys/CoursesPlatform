@@ -15,7 +15,7 @@
     {
         @if(item is Image)
         {
-            <img str="data:image/jpeg; base64, @item.ToString()">
+            <img  src="data:image/jpeg;base64,@item.ToString()" />
         }
         else
         {
