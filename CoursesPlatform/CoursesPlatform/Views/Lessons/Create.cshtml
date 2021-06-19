@@ -10,17 +10,21 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>        
-            
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div>
+                <label for="Topic">Topic</label>
+                <input type="text" name="Topic">
+            </div>
+
             <div id="anchorElement"></div>
 
-            <input type="button" value="add Text" 
-            onclick='addElementToPage(`<textarea class="inputElement" name="Elements[0].Text"></textarea>`)'>
-            @* <input class="inputElement" type="text" name="Elements[].Text"/> *@
-            
-            <input type="button" value="add image" 
-            onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[0].Image"/>`)'>
+            <input type="button" value="add Text"
+                onclick='addElementToPage(`<textarea class="inputElement" name="Elements[].Text"></textarea>`)'>
+
+            <input type="button" value="add image"
+                onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[].Image"/>`)'>
 
             <div>
                 <input type="number" name="courseId" value='@ViewData["CourseId"]' hidden>
@@ -38,7 +42,7 @@
 
 
 @section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
 
 <script src="~/js/elementsController.js" asp-append-version="true"></script>

@@ -35,5 +35,10 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
                 return stream.ToArray();
             }
         }
+
+        public override string ToString()
+        {
+            return Convert.ToBase64String(ByteImage);
+        }
     }
 }

@@ -9,6 +9,8 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements.ViewModels
     public class ContentViewModel
     {
         public int Id { get; set; }
+        
+        public string Topic { get; set; }
 
         public List<ElementViewModel> Elements { get; set; }
 

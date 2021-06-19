@@ -40,7 +40,7 @@ namespace CoursesPlatform.Controllers.Teacher
             }
 
             var lesson = await _context.Lessons
-                .Include(l => l.Course)
+                .Include(x=>x.Content)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (lesson == null)
             {
@@ -68,13 +68,14 @@ namespace CoursesPlatform.Controllers.Teacher
             {
                 var lesson = new Lesson
                 {
+                    Topic = content.Topic,
                     Content = content.GetLesson(),
                     CourseId = courseId.Value,
                 };
 
                 _context.Add(lesson);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { courseId = lesson.CourseId });
             }
             ViewData["CourseId"] = courseId;
             return View();
@@ -160,7 +161,7 @@ namespace CoursesPlatform.Controllers.Teacher
             var lesson = await _context.Lessons.FindAsync(id);
             _context.Lessons.Remove(lesson);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { courseId = lesson.CourseId });
         }
 
         private bool LessonExists(int id)

@@ -9,5 +9,10 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
     public class Paragraph : ContentElement
     {
         public string Text { get; set; }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace CoursesPlatform.Models.Teacher.Course
     public class Lesson
     {
         public int Id { get; set; }
+        public string Topic { get; set; }
         public List<ContentElement> Content { get; set; }
 
         public Lesson()
