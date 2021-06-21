@@ -35,5 +35,21 @@ namespace CoursesPlatform.Models
 
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Course>()
+                .HasOne(e => e.UserStudiedCourses)
+                .WithMany(e => e.StudiedCourses)
+                .HasForeignKey(e => e.UserStudiedCoursesId);
+
+            builder.Entity<Course>()
+                .HasOne(e => e.UserPublishedCourses)
+                .WithMany(e => e.PublishedCourses)
+                .HasForeignKey(e => e.UserPublishedCoursesId);
+        }
+
     }
 }

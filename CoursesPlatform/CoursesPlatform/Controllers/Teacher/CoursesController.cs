@@ -32,7 +32,7 @@ namespace CoursesPlatform.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var applicationContext = _context.Courses.Include(c => c.CourseCategory)
-                .Where(x=>x.UserId.Equals(user.Id));
+                .Where(x=>x.UserPublishedCoursesId.Equals(user.Id));
             return View(await applicationContext.ToListAsync());
         }
 
@@ -74,7 +74,7 @@ namespace CoursesPlatform.Controllers
                 var user = await _userManager.GetUserAsync(User);
 
                 course.CreationDate = DateTime.Now;
-                course.UserId = user.Id;
+                course.UserPublishedCoursesId = user.Id;
 
                 _context.Add(course);
                 await _context.SaveChangesAsync();

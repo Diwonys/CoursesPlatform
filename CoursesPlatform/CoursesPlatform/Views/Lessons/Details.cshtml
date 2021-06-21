@@ -10,7 +10,7 @@
 <div>
     <h4>Lesson</h4>
     <hr />
-
+    <h2>@Model.Topic</h2>
     @foreach (var item in Model.Content)
     {
         @if (item is Image)
@@ -25,5 +25,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-route-courseId="@Model.CourseId">Back to List</a>
 </div>

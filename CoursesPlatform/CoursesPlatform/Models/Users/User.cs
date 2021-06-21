@@ -9,8 +9,13 @@ namespace CoursesPlatform.Models.Users
 {
     public class User : IdentityUser
     {
-        public List<Course> Courses { get; set; }
+        public User()
+        {
+            PublishedCourses = new();
+            StudiedCourses = new();
+        }
 
-        public User() => Courses = new List<Course>();
+        public List<Course> PublishedCourses { get; set; }
+        public List<Course> StudiedCourses { get; set; }
     }
 }

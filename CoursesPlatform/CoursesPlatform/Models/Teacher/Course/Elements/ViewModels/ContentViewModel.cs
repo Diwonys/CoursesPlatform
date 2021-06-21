@@ -19,7 +19,8 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements.ViewModels
         public List<ContentElement> GetLesson()
         {
             List<ContentElement> contentElements = new List<ContentElement>();
-
+            if (Elements is null)
+                return contentElements;
             foreach (var element in Elements)
             {
                 contentElements.Add(element.GetContentElement());

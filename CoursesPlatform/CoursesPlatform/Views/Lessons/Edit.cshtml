@@ -30,21 +30,19 @@
                         <label for="height">height</label>
                         <input type="number" name="height" style="width: 50px;">
 
-                        @if (item is Image)
-                        {
-                            <div>
+                        <div>
+                            @if (item is Image)
+                            {
                                 <img src="data:image/jpeg;base64,@item.ToString()" />
                                 <input type="text" class="inputElement" name="Elements[@i].ByteImage" value="@item.ToString()"
-                            hidden />
+                                hidden />
                                 <input type="file" name="Elements[@i].Image" id="">
-                            </div>
-                        }
-                        else if(item is Paragraph)
-                        {
-                            <div>
+                            }
+                            else if (item is Paragraph)
+                            {
                                 <textarea class="inputElement" name="Elements[@i].Text">@item.ToString()</textarea>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
             }
@@ -70,7 +68,7 @@
 </div>
 
 <div>
-    <a asp-action="Index" asp-route-courseId='@ViewData["CourseId"]'>Back to List</a>
+    <a asp-action="Index" asp-route-courseId="@Model.CourseId">Back to List</a>
 </div>
 
 
