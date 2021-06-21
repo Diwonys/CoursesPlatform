@@ -1,6 +1,7 @@
 function addElementToPage(element) {
 
     var sizeControlElement = `  <div>
+                                    <input type="button" value="Remove" onclick="removeElement(this)">
                                     <label for="width">width</label>
                                     <input type="number" name="width" style="width: 50px;">
                                     <label for="height">height</label>
@@ -25,6 +26,6 @@ function insertCharacter(str, position) {
     return str.replace("Elements[]", `Elements[${position}]`);
 }
 
-function removeElement() {
-
+function removeElement(sender) {
+    sender.parentElement.parentElement.parentElement.removeChild(sender.parentElement.parentElement);
 }

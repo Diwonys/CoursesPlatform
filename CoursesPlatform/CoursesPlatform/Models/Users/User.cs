@@ -11,9 +11,6 @@ namespace CoursesPlatform.Models.Users
     {
         public List<Course> Courses { get; set; }
 
-        public User()
-        {
-            Courses = new List<Course>();
-        }
+        public User() => Courses = new List<Course>();
     }
 }

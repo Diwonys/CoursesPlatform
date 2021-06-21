@@ -19,7 +19,7 @@
             </div>
 
             <div id="anchorElement"></div>
-
+            
             <input type="button" value="add Text"
                 onclick='addElementToPage(`<textarea class="inputElement" name="Elements[].Text"></textarea>`)'>
 
@@ -37,7 +37,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-route-courseId='@ViewData["CourseId"]'>Back to List</a>
 </div>
 
 

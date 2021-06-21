@@ -10,14 +10,14 @@
 <div>
     <h4>Lesson</h4>
     <hr />
-    
+
     @foreach (var item in Model.Content)
     {
-        @if(item is Image)
+        @if (item is Image)
         {
-            <img  src="data:image/jpeg;base64,@item.ToString()" />
+            <img src="data:image/jpeg;base64,@item.ToString()" />
         }
-        else
+        else if(item is Paragraph)
         {
             <p>@item.ToString()</p>
         }

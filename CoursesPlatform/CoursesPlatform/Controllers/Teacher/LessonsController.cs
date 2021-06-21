@@ -40,7 +40,7 @@ namespace CoursesPlatform.Controllers.Teacher
             }
 
             var lesson = await _context.Lessons
-                .Include(x=>x.Content)
+                .Include(x => x.Content)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (lesson == null)
             {
@@ -85,15 +85,15 @@ namespace CoursesPlatform.Controllers.Teacher
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var lesson = await _context.Lessons.FindAsync(id);
+            var lesson = await _context.Lessons
+                .Include(x => x.Content)
+                .FirstOrDefaultAsync(x => x.Id.Equals(id));
+            
             if (lesson == null)
-            {
                 return NotFound();
-            }
+
             ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id", lesson.CourseId);
             return View(lesson);
         }
@@ -103,32 +103,32 @@ namespace CoursesPlatform.Controllers.Teacher
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CourseId")] Lesson lesson)
+        public async Task<IActionResult> Edit(ContentViewModel content, int? lessonId)
         {
-            if (id != lesson.Id)
-            {
+            var lesson = await _context.Lessons
+                .Include(x=>x.Content)
+                .FirstOrDefaultAsync(x=>x.Id.Equals(lessonId));
+            if (lesson == null)
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
+                    lesson.Topic = content.Topic;
+                    lesson.Content = content.GetLesson();
+
                     _context.Update(lesson);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!LessonExists(lesson.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { courseId = lesson.CourseId });
             }
             ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id", lesson.CourseId);
             return View(lesson);
