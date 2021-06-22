@@ -59,8 +59,10 @@ namespace CoursesPlatform.Controllers
             if (properties.CategoriesId != null && properties.CategoriesId.Length > 0)
                 courses = courses.Where(c => properties.CategoriesId.Any(x => x.Equals(c.CourseCategoryId)));
 
-            if (properties.CostFrom != null && properties.CostTo != null)
-                courses = courses.Where(x => x.Cost >= costFrom && x.Cost <= costTo);
+            if (properties.CostFrom != null)
+                courses = courses.Where(c => c.Cost >= properties.CostFrom);
+            if (properties.CostTo != null)
+                courses = courses.Where(c => c.Cost <= properties.CostTo);
 
             return courses;
         }
