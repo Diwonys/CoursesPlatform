@@ -25,22 +25,23 @@ namespace CoursesPlatform.Controllers
             IQueryable<Course> products = _context.Courses
                 .Include(e => e.CourseCategory);
 
-            //products = Filter(properties.CategoriesId, properties.CostFrom, properties.CostTo, products);
-            //products = Sort(properties.sortOrder, products);
+            products = Filter(properties, products);
+            products = Sort(properties.sortOrder, products);
 
-            //var count = await products.CountAsync();
-            //var items = await products.Skip((properties.Page - 1) * _pageSize).Take(_pageSize).ToListAsync();
+            var count = await products.CountAsync();
 
-            //var viewModel = new ProductsViewModel
-            //{
-            //    PageViewModel = new PageViewModel(count, properties.Page, _pageSize),
-            //    SortViewModel = new SortViewModel(properties.sortOrder),
-            //    FilterViewModel = new FilterViewModel(_context.ProductCategories.ToList(),
-            //        properties.CategoriesId, properties.CostFrom, properties.CostTo),
-            //    Products = items
-            //};
-            //return View(viewModel);
-            return null;
+            var courses = await products.Skip((properties.Page - 1) * _pageSize)
+                .Take(_pageSize).ToListAsync();
+
+            var viewModel = new CourseViewModel
+            {
+                PageViewModel = new PageViewModel(count, properties.Page, _pageSize),
+                SortViewModel = new SortViewModel(properties.sortOrder),
+                FilterViewModel = new FilterViewModel(_context.CourseCategories.ToList(), properties),
+                Courses = courses
+            };
+
+            return View(viewModel);
         }
 
         private IQueryable<Course> Sort(SortState sortOrder, IQueryable<Course> products) 
@@ -53,14 +54,12 @@ namespace CoursesPlatform.Controllers
             _ => products,
         };
 
-        private IQueryable<Course> Filter(int[] categoriesId, int? costFrom, int? costTo, IQueryable<Course> courses)
+        private IQueryable<Course> Filter(CourseFavorPropertiesViewModel properties, IQueryable<Course> courses)
         {
-            if (categoriesId != null && categoriesId.Length > 0)
-                courses = courses
-                    .Where(p =>
-                        categoriesId.Any(x =>
-                            x.Equals(p.CourseCategoryId)));
-            if (costFrom != null && costTo != null)
+            if (properties.CategoriesId != null && properties.CategoriesId.Length > 0)
+                courses = courses.Where(c => properties.CategoriesId.Any(x => x.Equals(c.CourseCategoryId)));
+
+            if (properties.CostFrom != null && properties.CostTo != null)
                 courses = courses.Where(x => x.Cost >= costFrom && x.Cost <= costTo);
 
             return courses;

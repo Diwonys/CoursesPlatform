@@ -14,12 +14,12 @@ namespace CoursesPlatform.Models.Teacher.Course.ViewModel
         public int SelectedCostFrom { get; set; }
         public int SelectedCostTo { get; set; }
 
-        public FilterViewModel(List<Course> categories, int[] categoriesId, int? selectedCostFrom, int? selectedCostTo)
+        public FilterViewModel(List<CourseCategory> categories, CourseFavorPropertiesViewModel properties)
         {
-            Categories = new SelectList(categories, "Id", "Name", categoriesId);
-            SelectedCategories = categoriesId ?? new int[0];
-            SelectedCostFrom = selectedCostFrom ?? 0;
-            SelectedCostTo = selectedCostTo ?? int.MaxValue;
+            Categories = new SelectList(categories, "Id", "Name", properties.CategoriesId);
+            SelectedCategories = properties.CategoriesId ?? new int[0];
+            SelectedCostFrom = properties.CostFrom ?? 0;
+            SelectedCostTo = properties.CostTo ?? int.MaxValue;
         }
     }
 }
