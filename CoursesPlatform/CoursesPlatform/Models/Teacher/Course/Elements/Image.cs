@@ -36,7 +36,17 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
             }
         }
 
-        public override string ToString()
+        public FormFile GetFormFileImage()
+        {
+            var stream = new MemoryStream(ByteImage);
+            return new FormFile(stream, 0, ByteImage.Length, Name, Name);
+        }
+        public override string GetContent()
+        {
+            return "data:image/jpeg;base64," + Convert.ToBase64String(ByteImage);
+        }
+
+        public override string GetImageBase64String()
         {
             return Convert.ToBase64String(ByteImage);
         }

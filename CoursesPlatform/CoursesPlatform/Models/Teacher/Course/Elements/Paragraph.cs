@@ -10,7 +10,7 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
     {
         public string Text { get; set; }
 
-        public override string ToString()
+        public override string GetContent()
         {
             return Text;
         }

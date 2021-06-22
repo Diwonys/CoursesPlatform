@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using CoursesPlatform.Models.Users;
+using Microsoft.AspNetCore.Http;
+using System.Diagnostics.Contracts;
+using CoursesPlatform.Models.Teacher.Course.Elements;
 
 namespace CoursesPlatform.Controllers
 {
@@ -26,13 +29,13 @@ namespace CoursesPlatform.Controllers
             _context = context;
             _userManager = userManager;
         }
-        
+
         // GET: Courses
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
             var applicationContext = _context.Courses.Include(c => c.CourseCategory)
-                .Where(x=>x.UserPublishedCoursesId.Equals(user.Id));
+                .Where(x => x.UserPublishedCoursesId.Equals(user.Id));
             return View(await applicationContext.ToListAsync());
         }
 
@@ -46,6 +49,7 @@ namespace CoursesPlatform.Controllers
 
             var course = await _context.Courses
                 .Include(c => c.CourseCategory)
+                .Include(i => i.Image)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (course == null)
             {
@@ -67,7 +71,7 @@ namespace CoursesPlatform.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,CreationDate,CourseCategoryId")] Course course)
+        public async Task<IActionResult> Create(Course course)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +96,9 @@ namespace CoursesPlatform.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses.FindAsync(id);
+            var course = await _context.Courses
+                .Include(e => e.Image)
+                .FirstOrDefaultAsync(e => e.Id.Equals(id));
             if (course == null)
             {
                 return NotFound();
@@ -106,30 +112,34 @@ namespace CoursesPlatform.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,CreationDate,CourseCategoryId")] Course course)
+        public async Task<IActionResult> Edit(int id, Course course)
         {
             if (id != course.Id)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(course);
+                    var sourseCourse = await _context.Courses.
+                        FirstOrDefaultAsync(e => e.Id.Equals(course.Id));
+
+                    sourseCourse.Name = course.Name;
+                    sourseCourse.Description = course.Description;
+                    sourseCourse.Cost = course.Cost;
+                    sourseCourse.CourseCategoryId = course.CourseCategoryId;
+                    
+                    if (course.Image != null)
+                        sourseCourse.Image = course.Image;
+                    
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!CourseExists(course.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }

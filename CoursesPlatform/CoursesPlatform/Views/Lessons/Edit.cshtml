@@ -33,14 +33,14 @@
                         <div>
                             @if (item is Image)
                             {
-                                <img src="data:image/jpeg;base64,@item.ToString()" />
-                                <input type="text" class="inputElement" name="Elements[@i].ByteImage" value="@item.ToString()"
-                                hidden />
+                                <img src="@item.GetContent()" />
+                                <input type="text" class="inputElement" name="Elements[@i].ByteImage" 
+                                    value="@item.GetImageBase64String()" hidden />
                                 <input type="file" name="Elements[@i].Image" id="">
                             }
                             else if (item is Paragraph)
                             {
-                                <textarea class="inputElement" name="Elements[@i].Text">@item.ToString()</textarea>
+                                <textarea class="inputElement" name="Elements[@i].Text">@item.GetContent()</textarea>
                             }
                         </div>
                     </div>

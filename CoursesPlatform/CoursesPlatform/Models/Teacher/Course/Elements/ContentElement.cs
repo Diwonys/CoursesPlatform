@@ -15,7 +15,17 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
 
         public string Discriminator { get; set; }
 
-        public int LessonId { get; set; }
+        public int? LessonId { get; set; }
         public Lesson Lesson { get; set; }
+
+        public virtual string GetContent()
+        {
+            return string.Empty;
+        }
+
+        public virtual string GetImageBase64String()
+        {
+            return string.Empty;
+        }
     }
 }

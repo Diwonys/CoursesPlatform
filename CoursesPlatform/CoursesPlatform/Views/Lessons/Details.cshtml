@@ -15,11 +15,11 @@
     {
         @if (item is Image)
         {
-            <img src="data:image/jpeg;base64,@item.ToString()" />
+            <img src="@item.GetContent()" />
         }
         else if(item is Paragraph)
         {
-            <p>@item.ToString()</p>
+            <p>@item.GetContent()</p>
         }
     }
 </div>
