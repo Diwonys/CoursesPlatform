@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace CoursesPlatform.Controllers
 {
-    public class TradingAreaController : Controller
+    public class TraidingAreaController : Controller
     {
         private readonly ApplicationContext _context;
         private readonly int _pageSize = Constants.CountProductsOnPage;
 
-        public TradingAreaController(ApplicationContext context)
+        public TraidingAreaController(ApplicationContext context)
         {
             _context = context;
         }
@@ -23,6 +23,8 @@ namespace CoursesPlatform.Controllers
         public async Task<IActionResult> Index(CourseFavorPropertiesViewModel properties)
         {
             IQueryable<Course> products = _context.Courses
+                .Include(e => e.Image)
+                .Include(e => e.UserPublishedCourses)
                 .Include(e => e.CourseCategory);
 
             products = Filter(properties, products);

@@ -43,7 +43,13 @@ namespace CoursesPlatform.Models.Teacher.Course.Elements
         }
         public override string GetContent()
         {
-            return "data:image/jpeg;base64," + Convert.ToBase64String(ByteImage);
+            string defaultImagePath = @"../CoursesPlatform/wwwroot/images/default_cart_picture.jpg";
+            string imageBaseType = "data:image/jpeg;base64,";
+
+            if (ByteImage != null)
+                return imageBaseType + Convert.ToBase64String(ByteImage);
+            else
+                return imageBaseType + Convert.ToBase64String(File.ReadAllBytes(defaultImagePath));
         }
 
         public override string GetImageBase64String()

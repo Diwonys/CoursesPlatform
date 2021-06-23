@@ -36,7 +36,7 @@
     <div class="navigation">
         <div id="aside">
             <div class="list-group list-group-flush">
-                <form method="get" asp-action="Index" asp-controller="Traiding">
+                <form method="get" asp-action="Index" asp-controller="TraidingArea">
                     <div class="list-group-item">
                         <h4 class="text-title">Группа товаров:</h4>
                         <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scroll">
@@ -64,7 +64,7 @@
                             <div class="text-number d-inline">
                                 <label>
                                     от <input class="numbers" name="CostFrom" type="number" min="0" step="any"
-                                              value="@Model.FilterViewModel.SelectedCostForm" />
+                                              value="@Model.FilterViewModel.SelectedCostFrom" />
                                 </label>
                             </div>
                             <div class="text-number d-inline">
@@ -85,7 +85,7 @@
 
                         <form asp-action="Index">
                             <input type="text" name="sortOrder" value="@(Model.SortViewModel.NameSort)" hidden>
-                            <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostForm" hidden>
+                            <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostFrom" hidden>
                             <input type="number" name="CostTo" value="@Model.FilterViewModel.SelectedCostTo" hidden>
                             @foreach (var category in Model.FilterViewModel.SelectedCategories)
                             {
@@ -96,7 +96,7 @@
 
                         <form asp-action="Index">
                             <input type="text" name="sortOrder" value="@(Model.SortViewModel.CostSort)" hidden>
-                            <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostForm" hidden>
+                            <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostFrom" hidden>
                             <input type="number" name="CostTo" value="@Model.FilterViewModel.SelectedCostTo" hidden>
                             @foreach (var category in Model.FilterViewModel.SelectedCategories)
                             {
@@ -120,25 +120,24 @@
             <div class="album">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                   
-                        @foreach (var product in Model.Products)
+                        
+                        @foreach (var course in Model.Courses)
                         {
-                            
                             <div class="col">
-                                <div class="card text-center shadow-sm">
-                                    <a asp-action="Details" asp-controller="Traiding" asp-route-id="@product.Id">
+                                <div class="card text-center shadow-sm" >
+                                    <a asp-action="Details" asp-controller="Traiding" asp-route-id="@course.Id">
                                         <div class="img-cover">
-                                            @Html.Raw("<img class=\"card-img card-img-top\"' src=\"data:image/jpeg;base64,"
-                                            + Convert.ToBase64String(product.ProductPictures.GetPreviewPicture().Result) + "\" />")
+                                            <img class='card-img card-img-top' src="@course.Image.GetContent()">
                                         </div>
                                     </a>
                                     
                                     <div class="card-body">
-                                        <h5 class="card-title">@product.ProductName</h5>
-                                        <h6 class="card-subtitle text-muted">@product.ProductCategory.Name</h6>
-                                        <h4 class="card-price">@product.Cost<br><small class="card-price-cost text-muted">руб.коп.</small></h4>
+                                        <h5 class="card-title">@course.Name</h5>
+                                        <h6 class="card-subtitle text-muted">@course.CourseCategory.Name</h6>
+                                        <h6 class="card-subtitle text-muted">@course.UserPublishedCourses.</h6>
+                                        <h4 class="card-price">@course.Cost<br><small class="card-price-cost text-muted">рублей</small></h4>
                                         <form asp-controller="Orders" asp-action="Add" method="POST">
-                                        <input type="number" name="productId" value="@product.Id" hidden>
+                                        <input type="number" name="productId" value="@course.Id" hidden>
 
                                         <input type="submit" class="btn" name="add-to-order" value="Добавить в корзину">
                                     </form>
@@ -166,8 +165,8 @@
                         {
                             <form asp-action="Index">
                                 <input type="text" name="page" value="@(Model.PageViewModel.PageNumber - 1)" hidden>
-                                <input type="text" name="sortOrder" value="@(Model.SortViewModel.Current)" hidden>
-                                <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostForm" hidden>
+                                <input type="text" name="sortOrder" value="@(Model.SortViewModel.CurrentState)" hidden>
+                                <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostFrom" hidden>
                                 <input type="number" name="CostTo" value="@Model.FilterViewModel.SelectedCostTo" hidden>
                                             @foreach (var category in Model.FilterViewModel.SelectedCategories)
                                             {
@@ -187,8 +186,8 @@
                         {
                             <form asp-action="Index">
                                 <input type="text" name="page" value="@(Model.PageViewModel.PageNumber + 1)" hidden>
-                                <input type="text" name="sortOrder" value="@(Model.SortViewModel.Current)" hidden>
-                                <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostForm" hidden>
+                                <input type="text" name="sortOrder" value="@(Model.SortViewModel.CurrentState)" hidden>
+                                <input type="number" name="CostFrom" value="@Model.FilterViewModel.SelectedCostFrom" hidden>
                                 <input type="number" name="CostTo" value="@Model.FilterViewModel.SelectedCostTo" hidden>
                                 @foreach (var category in Model.FilterViewModel.SelectedCategories)
                                 {

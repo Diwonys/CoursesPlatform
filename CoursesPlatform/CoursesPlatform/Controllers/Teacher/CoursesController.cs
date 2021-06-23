@@ -129,7 +129,7 @@ namespace CoursesPlatform.Controllers
                     sourseCourse.Cost = course.Cost;
                     sourseCourse.CourseCategoryId = course.CourseCategoryId;
                     
-                    if (course.Image != null)
+                    if (course.Image.ByteImage != null)
                         sourseCourse.Image = course.Image;
                     
                     await _context.SaveChangesAsync();

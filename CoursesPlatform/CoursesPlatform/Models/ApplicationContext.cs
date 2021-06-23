@@ -49,6 +49,11 @@ namespace CoursesPlatform.Models
                 .HasOne(e => e.UserPublishedCourses)
                 .WithMany(e => e.PublishedCourses)
                 .HasForeignKey(e => e.UserPublishedCoursesId);
+
+            builder.Entity<ContentElement>()
+                .HasOne(p => p.Lesson)
+                .WithMany(t => t.Content)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
     }
