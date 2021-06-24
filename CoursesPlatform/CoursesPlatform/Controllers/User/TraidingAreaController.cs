@@ -1,6 +1,9 @@
 ﻿using CoursesPlatform.Models;
 using CoursesPlatform.Models.Teacher.Course;
 using CoursesPlatform.Models.Teacher.Course.ViewModel;
+using CoursesPlatform.Models.Users;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,11 +16,13 @@ namespace CoursesPlatform.Controllers
     public class TraidingAreaController : Controller
     {
         private readonly ApplicationContext _context;
+        private readonly UserManager<User> _userManager;
         private readonly int _pageSize = Constants.CountProductsOnPage;
 
-        public TraidingAreaController(ApplicationContext context)
+        public TraidingAreaController(ApplicationContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index(CourseFavorPropertiesViewModel properties)
@@ -68,5 +73,79 @@ namespace CoursesPlatform.Controllers
 
             return courses;
         }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            var course = await _context.Courses
+                .Include(e=>e.Image)
+                .FirstOrDefaultAsync(e => e.Id.Equals(id));
+            
+            if (course == null)
+                return NotFound();
+
+            return View(course);
+        }
+        
+        [Authorize]
+        public async Task<IActionResult> Subscribe(int? id)
+        {
+            var course = await _context.Courses
+                .FirstOrDefaultAsync(e => e.Id.Equals(id));
+
+            var userId = _userManager.GetUserAsync(User).Result.Id;
+
+            var user = await _context.Users
+                .Include(e => e.StudiedCourses)
+                .FirstOrDefaultAsync(e => e.Id.Equals(userId));
+
+            if (course == null)
+                return NotFound();
+
+            if (user.StudiedCourses.Contains(course))
+                return RedirectToAction(nameof(AlreadySubscribed));
+
+            if (course.Cost > 0)
+                return RedirectToAction(nameof(Pay), new { id = course.Id });
+
+            user.StudiedCourses.Add(course);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("SubscribedCourses", "PersonalArea");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Pay(int? id)
+        {
+            var course = await _context.Courses
+                .FirstOrDefaultAsync(e => e.Id.Equals(id));
+
+            if (course == null)
+                return NotFound();
+
+            return View(course);
+        }
+
+        [Authorize]
+        [HttpPost, ActionName("Pay")]
+        public async Task<IActionResult> PayConfirmation(int? id)
+        {
+            var course = await _context.Courses
+               .FirstOrDefaultAsync(e => e.Id.Equals(id));
+
+            var userId = _userManager.GetUserAsync(User).Result.Id;
+            var user = await _context.Users
+                .Include(e => e.StudiedCourses)
+                .FirstOrDefaultAsync(e => e.Id.Equals(userId));
+
+            if (course == null)
+                return NotFound();
+
+            user.StudiedCourses.Add(course);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("SubscribedCourses", "PersonalArea");
+        }
+        [Authorize]
+        public IActionResult AlreadySubscribed() => View();
     }
 }
