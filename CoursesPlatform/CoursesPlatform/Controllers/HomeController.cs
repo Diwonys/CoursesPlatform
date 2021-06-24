@@ -1,5 +1,8 @@
 ﻿using CoursesPlatform.Models;
+using CoursesPlatform.Models.Users;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,22 +14,36 @@ namespace CoursesPlatform.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationContext context, UserManager<User> userManager)
         {
-            _logger = logger;
+            _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var userId = _userManager.GetUserAsync(User).Result.Id;
+            var usersLesons = await _context.Lessons
+                .Include(e=>e.Course)
+                .Include(e => e.Content)
+                .Where(e => e.Course.UserStudiedCourses.Id.Equals(userId))
+                .ToListAsync();
+
+            for (int i = 0; i < usersLesons.Count(); i++)
+            {
+                var lesson = usersLesons[i];
+                lesson.Content = lesson.Content.Take(3).ToList();
+            }
+
+            usersLesons.Reverse();
+
+            return View(usersLesons);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

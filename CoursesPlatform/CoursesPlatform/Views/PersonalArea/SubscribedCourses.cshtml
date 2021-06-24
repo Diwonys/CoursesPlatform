@@ -4,11 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -44,7 +40,7 @@
                     <img src="@item.Image.GetContent()" alt="" style="width: 150px; height 150px;">
                 </td>
                 <td>
-                    actions
+                    <a asp-action="CourseDetails" asp-route-id="@item.Id">Перейти</a>
                 </td>
             </tr>
         }

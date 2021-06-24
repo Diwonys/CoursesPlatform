@@ -1,5 +1,27 @@
-﻿@{
+﻿@using CoursesPlatform.Models.Teacher.Course.Elements
+@model IEnumerable<CoursesPlatform.Models.Teacher.Course.Lesson>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<a asp-></a>
+
+@foreach (var lesson in Model)
+{
+    <p>Курс : @lesson.Course.Name опубликовал новый урок - @lesson.Topic</p>
+    <div>
+        @foreach (var contentElement in lesson.Content)
+        {
+            @if (contentElement is Image)
+            {
+                <img src="@contentElement.GetContent()" style="width: 150px; height:150px"/>
+            }
+            else if (contentElement is Paragraph)
+            {
+                <p>@contentElement.GetContent()</p>
+            }
+        }
+        <p>....</p>
+        <a asp-controller="PersonalArea" asp-action="LessonDetails" asp-route-id="@lesson.Id">Перейти к уроку</a>
+    </div>
+    <hr>
+}

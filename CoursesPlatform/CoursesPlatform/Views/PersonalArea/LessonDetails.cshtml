@@ -1,0 +1,19 @@
+@using CoursesPlatform.Models.Teacher.Course.Elements
+@model CoursesPlatform.Models.Teacher.Course.Lesson
+
+<div>
+    <h4>Lesson</h4>
+    <hr />
+    <h2>@Model.Topic</h2>
+    @foreach (var item in Model.Content)
+    {
+        @if (item is Image)
+        {
+            <img src="@item.GetContent()" />
+        }
+        else if(item is Paragraph)
+        {
+            <p>@item.GetContent()</p>
+        }
+    }
+</div>
