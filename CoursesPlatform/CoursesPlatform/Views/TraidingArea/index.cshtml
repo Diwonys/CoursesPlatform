@@ -139,7 +139,7 @@
                                         <form asp-controller="Orders" asp-action="Add" method="POST">
                                         <input type="number" name="productId" value="@course.Id" hidden>
 
-                                        <input type="submit" class="btn" name="add-to-order" value="Добавить в корзину">
+                                        <a asp-action="Subscribe" asp-route-id="@course.Id">Записаться на курс</a>
                                     </form>
                                     </div>
                                 </div>

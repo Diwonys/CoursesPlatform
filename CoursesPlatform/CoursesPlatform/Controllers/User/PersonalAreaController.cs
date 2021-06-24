@@ -64,5 +64,32 @@ namespace CoursesPlatform.Controllers
             return View(lesson);
         }
 
+        public async Task<IActionResult> UnSubscribe(int? id)
+        {
+            var course = await _context.Courses.FirstOrDefaultAsync(e => e.Id.Equals(id));
+            if (course == null)
+                return NotFound();
+
+            return View(course);
+        }
+
+        [HttpPost, ActionName("UnSubscribe")]
+        public async Task<IActionResult> UnsubscribeConfirmation(int? id)
+        {
+            var course = await _context.Courses.FirstOrDefaultAsync(e => e.Id.Equals(id));
+            
+            var userId = _userManager.GetUserAsync(User).Result.Id;
+            var user = await _context.Users
+                .Include(e=>e.StudiedCourses)
+                .FirstOrDefaultAsync(e => e.Id.Equals(userId));
+
+            if (course == null)
+                return NotFound();
+
+            user.StudiedCourses.Remove(course);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(SubscribedCourses));
+        }
     }
 }

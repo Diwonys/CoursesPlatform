@@ -40,6 +40,7 @@
                     <img src="@item.Image.GetContent()" alt="" style="width: 150px; height 150px;">
                 </td>
                 <td>
+                    <a asp-action="UnSubscribe" asp-route-id="@item.Id">Покинуть курс</a> |
                     <a asp-action="CourseDetails" asp-route-id="@item.Id">Перейти</a>
                 </td>
             </tr>
