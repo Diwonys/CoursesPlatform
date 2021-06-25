@@ -1,4 +1,5 @@
 ﻿using CoursesPlatform.Models;
+using CoursesPlatform.Models.PdfDocuments.Check;
 using CoursesPlatform.Models.Teacher.Course;
 using CoursesPlatform.Models.Teacher.Course.ViewModel;
 using CoursesPlatform.Models.Users;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -127,7 +129,7 @@ namespace CoursesPlatform.Controllers
 
         [Authorize]
         [HttpPost, ActionName("Pay")]
-        public async Task<IActionResult> PayConfirmation(int? id)
+        public async Task<IActionResult> PayConfirmation(int? id, bool createCheck)
         {
             var course = await _context.Courses
                .FirstOrDefaultAsync(e => e.Id.Equals(id));
@@ -143,7 +145,31 @@ namespace CoursesPlatform.Controllers
             user.StudiedCourses.Add(course);
             await _context.SaveChangesAsync();
 
+            if (createCheck)
+                return File(GetCheckStream(course), "application/pdf");
+
             return RedirectToAction("SubscribedCourses", "PersonalArea");
+        }
+        public Stream GetCheckStream(Course course)
+        {
+            var check = new Check
+            {
+                CompanyName = "Einheijar",
+                Href = "lokalohost:5001",
+                INN = "4301431",
+                Number = course.Id
+            };
+
+            check.InitHeader();
+
+            check.AddProduct(new CheckProduct
+            {
+                Name = course.Name,
+                Count = 1,
+                Cost = course.Cost
+            });
+
+            return check.GetDocument();
         }
         [Authorize]
         public IActionResult AlreadySubscribed() => View();
