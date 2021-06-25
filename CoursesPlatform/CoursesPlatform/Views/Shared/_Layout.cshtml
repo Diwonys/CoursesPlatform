@@ -4,11 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CoursesPlatform</title>
+    
+    <link rel="stylesheet" href="~/css/HomeIndex.css" />
+
+    <link rel="stylesheet" href="~/css/LayoutHeader.css" />
+    <link rel="stylesheet" href="~/css/LayoutFooter.css" />
+    <link rel="stylesheet" href="~/css/LayoutBody.css" />
+    
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
+    @* <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoursesPlatform</a>
@@ -55,16 +62,206 @@
         <form method="post" asp-controller="Account" asp-action="Logout">
             <input class="dropdown-item" type="submit" value="Выход" />
         </form>
-    }
+    } *@
+
+<header>
+        <div class="container-fluid">
+
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Images/Einherjar.png" alt="logo-header" id="logo-header">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="navbar-first navbar-nav justify-content-center">
+                        <a class="nav-item nav-link active" asp-area="" asp-controller="Home"
+                            asp-action="Index">Главная</a>
+                        <a class="nav-item nav-link active" asp-area="" asp-controller="Traiding"
+                            asp-action="Index">Курсы</a>
+                        <a class="nav-item nav-link active" asp-area="" asp-controller="Home" asp-action="AboutUs">Поддержка</a>
+                        <a class="nav-item nav-link active" asp-area="" asp-controller="Home" asp-action="Contacts">Контакты</a>
+
+                    </div>
+                    <div class="navbar-second navbar-nav  justify-content-end">
+                        @* <a class="nav-link nav-item text-dark" asp-area="" asp-controller="Orders" asp-action="Index">
+                            <img src="~/Images/icon-image/shopping-bag.png" alt="user" style="width: auto; height: auto;">
+                        </a> *@
+
+
+                        @* <!-- hiden -->
+                            <div class="dropdown">
+                            <button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img src="~/Images/search.png" alt="user">
+                            </button>
+                            <div class="dropdown-menu dropdown-search" aria-labelledby="dropdownMenuButton">
+                            <form class="navbar form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Введите товар"
+                            aria-label="Search">
+                            <button class="btn btn-circle my-2 my-sm-0" type="submit">
+                            <img src="~/Images/search.png" alt="search" class="search">
+                            </button>
+                            </form>
+                            </div>
+                            </div>
+                            <!-- hiden -->
+                        *@
+
+
+                        <div class="dropdown">
+                            <button class="btn btn-circle nav-item"  type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/user.png" alt="user-header">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Login">Вход в
+                                        аккаунт</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Account"
+                                    asp-action="Register">Зарегистрироваться</a>
+
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="PersonalArea"
+                                    asp-action="Index">Личный
+                                        кабинет</a>
+                                    <div class="dropdown-divider"></div>
+                                    <form method="post" asp-controller="Account" asp-action="Logout">
+                                        <input class="dropdown-item" type="submit" value="Выход" />
+                                    </form>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+
+    </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - CoursesPlatform - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer> *@
+
+
+    <footer class="site-footer container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-xs-2 col-md-2">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="/Images/Einherjar.png" alt="logo-header" id="logo-header">
+                    </a>
+                </div>
+                <div class="col-xs-1 col-md-1"></div>
+                <div class="col-xs-1 col-md-1">
+                    <h5>Магазин</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Новинки</a></li>
+                        <li><a href="#">Лучшие товары</a></li>
+                        <li><a href="#">Парфюмерия</a></li>
+                        <li><a href="#">Макияж</a></li>
+                        <li><a href="#">Уход</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-1 col-md-1"></div>
+                <div class="col-xs-1 col-md-1">
+                    <h5>Способы</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">О доставке</a></li>
+                        <li><a href="#">Способы оплаты</a></li>
+                        <li><a href="#">Пользовательское</br>соглашение</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-1 col-md-1"></div>
+                <div class="col-xs-1 col-md-1">
+                    <h5>Компания</h5>
+                    <ul class="footer-links">
+                        <li><a href="http://scanfcode.com/about/">О нас</a></li>
+                        <li><a href="http://scanfcode.com/contact/">Сотрудничество</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-1 col-md-2"></div>
+                <div class="col-xs-2 col-md-2">
+                    <h5>Контакты</h5>
+                    <ul class="footer-links">
+                        <li><a href="tel:+375297418529"> <img src="~/Images/icon-image/phone.png" alt="phone"> +375(29) 741-85-29</a>
+                        </li>
+                        <li><a href="mail:vicosmetic@gmail.com"> <img src="~/Images/icon-image/email.png" alt="email">
+                                vicosmetic@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12 ">
+                    <ul class="social-icons">
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/facebook.png" alt="user">
+                            </button></li>
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/instagram.png" alt="user">
+                            </button></li>
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/playstore.png" alt="user">
+                            </button></li>
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/app-store.png" alt="user">
+                            </button></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <p class="copyright-text">&copy;2021 Create by Einherjar</p>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <ul class="social-icons pay-icons">
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/mastercard.png" alt="user">
+                            </button></li>
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/visa.png" alt="user">
+                            </button></li>
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/webmoney.png" alt="user">
+                            </button></li>
+                        <li><button class="btn btn-circle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Images/icon-image/yandex.png" alt="user">
+                            </button></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
