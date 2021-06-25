@@ -24,21 +24,48 @@
     </div>
 </section>
 
-<section class="lesson-main-container">
-    <div class="container">
-        <table class="lesson-element">
-            <tr>
-                <td>
+<section class="news-courses-container">
+    <div class="container-courses">
+        <h2 class="text-center">Новости курсов</h2>
+        @* <div class="news-element">
+            <h4>Название курса <span>опубликовал новый урок</span>: Имя урока</h4>
+            <p class="description">Описание</p>
+            <div class="order">
+            <div class="img-cover">
+            <img src="~/Images/main-pick.png" alt="" class="card-img card-img-top">
+            </div>
 
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-        </table>
+            </div>
+            <p class="description">Описание</p>
+            </div> *@
+        @foreach (var lesson in Model)
+        {
+            <div class="news-element ">
+                <h4>Курс: @lesson.Course.Name <span>опубликовал новый урок</span>: @lesson.Topic</h4>
+                @foreach (var contentElement in lesson.Content)
+                {
+                    @if (contentElement is Image)
+                    {
+                        <div class="order">
+                            <div class="img-cover">
+                                <img src="@contentElement.GetContent()" class="card-img card-img-top" />
+                            </div>
+
+                        </div>
+                    }
+                    else if (contentElement is Paragraph)
+                    {
+                        <p class="description">@contentElement.GetContent()</p>
+                    }
+                }
+                <p class="description">...</p>
+                <a asp-controller="PersonalArea" asp-action="LessonDetails" asp-route-id="@lesson.Id" class="btn-news">Перейти к уроку</a>
+            </div>
+        }
     </div>
 </section>
-@foreach (var lesson in Model)
+
+@* @foreach (var lesson in Model)
 {
     <p>Курс : @lesson.Course.Name опубликовал новый урок - @lesson.Topic</p>
     <div>
@@ -57,4 +84,4 @@
         <a asp-controller="PersonalArea" asp-action="LessonDetails" asp-route-id="@lesson.Id">Перейти к уроку</a>
     </div>
     <hr>
-}
+} *@
