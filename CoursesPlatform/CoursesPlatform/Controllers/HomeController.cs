@@ -51,6 +51,10 @@ namespace CoursesPlatform.Controllers
 
         public IActionResult Privacy() => View();
 
+        public IActionResult Support() => View();
+
+        public IActionResult Сontacts() => View();
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
