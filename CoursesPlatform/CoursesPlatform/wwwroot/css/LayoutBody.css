@@ -1,0 +1,55 @@
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    margin: 0!important;
+    padding: 0!important;
+}
+.container-myself-info
+{
+    height: auto;
+    min-height: 230px;
+}
+.btn-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 35px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+.btn-circle:focus {
+    box-shadow: 0 1px 1px #FFF8F4 inset, 0 0 8px #FFF8F4!important;
+}
+.main-hr{
+    width: auto;
+    margin: 0 150px 60px 150px;
+}
+.block-btn-persdata{
+    margin: 30px 300px 10px 300px;
+}
+.block-btn-persdata .btn-persdata{
+    margin: 0 10px;
+}
+.block-btn-persarea{
+    margin: 30px 200px;
+}
+.block-btn-persarea .btn-persdata{
+    margin: 0 10px;
+}
+
+.back-blur{
+    background: rgba(214, 204, 195, 0.2)
+}
+
+.btn-danger, .btn-outline-primary, .btn-outline-danger, .btn-success, .btn-outline-warning, .btn-outline-info, .btn-outline-success, .btn-info, .btn-warning, .btn-create {
+    padding: 10px 35px !important;
+    border-radius: 30px !important;
+}
+
+.btn-create{
+    color: #ba7900 !important;
+    background-color:  #F6AF3D !important;
+    
+    font-size: 16px ;
+    font-weight: 500;
+}
+

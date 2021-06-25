@@ -1,0 +1,60 @@
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+body header {
+  color: #271403;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif !important;
+  line-height: 24.84px;
+
+  margin: 10px 140px 40px 140px !important;
+}
+body header .navbar .navbar-brand .logo-header{
+  width: 127px;
+  height: 50px;
+}
+body header .collapse .navbar-first {
+  width: auto;
+  height: auto;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+body header .collapse .navbar-first .nav-item{
+  width: auto;
+  height: auto;
+  margin-right: 30px;
+}
+body header .collapse .navbar-second .dropdown .dropdown-menu{
+  width: 200px;
+  height: auto;
+  background-color: rgba(214, 204, 195, 0.2);
+  border: 1px solid rgba(39, 20, 3, 0.5);
+}
+body header .collapse .navbar-second .dropdown .dropdown-menu .dropdown-item:hover{
+  background-color: rgba(207, 125, 134, 0.12);
+
+}
+body header .collapse .navbar-second .dropdown .dropdown-search {
+  width: 250px;
+  height: auto;
+  padding: 0 2px 0 2px!important;
+  background-color: rgba(214, 204, 195, 0.2);
+  border: 1px solid rgba(39, 20, 3, 0.5);
+}
+body header .collapse .navbar-second .dropdown .dropdown-search .form-inline .form-control{
+  width: 160px;
+  height: 45px;
+}
+body header .collapse .navbar-second .dropdown .dropdown-search .btn{
+  width: auto;
+  height: auto;
+  padding: 8px;
+}
+body header .collapse .navbar-second .dropdown .dropdown-search .btn .search{
+  width: 25px;
+  height: 25px;
+}
+.dropdown-divider{
+  color: rgba(61, 29, 0, 0.5);
+}
