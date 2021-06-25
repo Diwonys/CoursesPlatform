@@ -1,0 +1,57 @@
+body .news-courses-container{
+    margin: 40px 100px;
+}
+body .news-courses-container h2{
+    margin-bottom: 40px;
+}
+body .news-courses-container .news-element{
+    border-radius: 12px;
+    border: 1px solid rgb(47, 28, 10);
+    padding: 80px 40px;
+    margin-bottom: 25px;
+}
+body .news-courses-container .news-element h4{
+    margin-bottom: 20px;
+}
+body .news-courses-container .news-element h4 span{
+    margin-bottom: 20px;
+    color: #358579;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+body .news-courses-container .news-element .description{
+    padding: 10px 0;
+    color: #321701;
+    font-weight: 500;
+    font-size: 18px;
+}
+body .news-courses-container .news-element .btn-news{
+    padding: 15px 40px;
+    border-radius: 30px;
+    color: #358579;
+    border: 2px solid #358579;
+    text-align: center;
+    font-weight: 600;
+    margin: 20px 365px;
+}
+body .news-courses-container .news-element .order{
+    width: 255px;
+    height: 300px;
+    margin-bottom: 40px;
+    border-radius: 8px !important;
+}
+body .news-courses-container .news-element .order:last-child{
+    width: 255px;
+    height: 300px;
+    padding-right: 0px;
+}
+body .news-courses-container .news-element .order .img-cover{
+    width: 290px;
+    height: 340px;
+}
+body .news-courses-container .news-element .order .card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px !important;
+}

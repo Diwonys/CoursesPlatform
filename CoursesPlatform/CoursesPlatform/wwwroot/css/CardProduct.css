@@ -1,0 +1,121 @@
+/* ---------------карусель--------------- */
+body .carusel-element{
+    width: auto;
+    margin: 120px 140px 60px 130px;
+    font-family: 'Montserrat', sans-serif !important;
+}
+body .carusel-element .container-fluid{
+    width: auto;
+    text-align: center;
+}
+body .carusel-element .container-fluid h2{
+    padding-bottom: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 101.18%;
+
+    color: #000000;
+    margin: 0 200px;
+}
+body .carusel-element .container-fluid .carousel .carousel-inner{
+    margin: 0 100px 0px 50px;
+    
+}
+
+/* ----------карта------------ */
+
+body .card-group{
+    width: 900px;
+    margin: 0 80px 0px 80px;
+    
+}
+body .card-group .card{
+     
+    width: 288px;
+    height: auto;
+    padding-right: 20px;
+}
+body .card-group .card:last-child{
+    width: 288px;
+    height: auto;
+    padding-right: 0px;
+}
+body .card-group .card .img-body{
+    width: 288px;
+    height: 360.44px;
+}
+body  .card-group .card .img-body .card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px !important;
+}
+body .card-group .card .card-body .card-title{
+    height: auto;
+    margin-top:15px;
+    padding: 0px 5px;
+    
+    
+    font-family: 'Montserrat', sans-serif !important;
+    color: #000000;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 101.18%;
+    text-align: center;
+}
+body .card-group .card .card-body .card-subtitle{
+    margin-top: 6px;
+    
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+body .card-group .card .card-body .card-price{
+    padding-top: 15px;
+    
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 34px;
+    
+    color: #000000;
+}
+body .card-group .card .card-body .card-price .card-price-cost{
+    margin-left: 5px;
+    
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 14px;
+    color: rgba(61, 29, 0, 0.7);
+}
+body .card-group .card .card-body .btn{
+    width: 200px;
+    height: 46px;
+    margin-top: 20px;
+    padding: 16px 35px;
+    border-radius: 30px !important;
+    color: #fff;
+    
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 107.9%;
+    letter-spacing: 0.02em; 
+    
+    
+    color:  #358579;
+    border: 1px solid  #358579;
+     
+}
+
+
+
