@@ -1,0 +1,126 @@
+body .traiding-container{
+  margin: 80px 0 0;
+}
+body .container {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    margin: 0px 100px !important;
+    
+     
+  }
+  
+  body .container .navigation {
+    /* padding: 25px 19px 25px 19px;  */
+  
+    border: 1px solid rgba(26, 26, 26, 0.5);
+    border-left: 0 !important;
+  
+    border-radius: 2px;
+    width: 246px;
+    height: auto;
+    flex-shrink: 0;
+    
+     
+  }
+  
+  body .container .navigation #aside {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    
+     
+  }
+  body .container .navigation #aside .list-group-item{
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(24, 24, 24, 0.4);
+    
+     
+  }
+  body .container .navigation #aside .list-group-item:last-child{
+    margin-bottom: 0px;
+    border-bottom: 1px solid rgba(61, 29, 0, 0);
+  }
+  body .container .navigation #aside .list-group-item .text-title{
+    margin-bottom: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 33px;
+  
+    color: #000000;
+  }
+  .checkbox{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 22px;
+    padding-bottom: 2px;
+    color: #3c3c3c;
+  }
+  .text-number{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    color: #000000;
+    
+  }
+  .scroll {
+    height:120px;
+    overflow-y: scroll;
+  }
+  .numbers{
+    margin-left: 4px;
+    margin-right: 10px;
+    max-width: 74px;
+    height: 25px;
+    border-radius: 8px;
+    padding-left: 5px;
+    background: rgba(214, 204, 195, 0.2);
+    color: rgba(31, 31, 31, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  .number:last-child{
+    margin-left: 0px;
+  }
+  .btn-filter{
+    padding: auto!important;
+    margin-bottom: 8px !important;
+    width: 193px !important;
+    height: 35px !important;
+  
+    /* background: rgba(214, 204, 195, 0.2) !important;
+    border: 1px solid rgba(39, 20, 3, 0.5) !important; */
+    color:  #358579 !important;
+    border: 1px solid  #358579!important;
+     
+    border-radius: 15px !important;
+  
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px !important;
+    line-height: 17px;
+    text-align: center !important;
+  
+  }
+  .btn-filter:last-child{
+    margin-bottom: 0px !important;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .content {
+    
+     
+    
+    min-height: 600px;
+      height: auto;
+    max-height: 1900px;
+    /* background: #FFF8F4 !important; */
+    width: 1680px;
+  }
