@@ -1,4 +1,5 @@
 ﻿using CoursesPlatform.Models;
+using CoursesPlatform.Models.Teacher.Course;
 using CoursesPlatform.Models.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,22 +26,27 @@ namespace CoursesPlatform.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var userId = _userManager.GetUserAsync(User).Result.Id;
-            var usersLesons = await _context.Lessons
-                .Include(e=>e.Course)
-                .Include(e => e.Content)
-                .Where(e => e.Course.UserStudiedCourses.Id.Equals(userId))
-                .ToListAsync();
-
-            for (int i = 0; i < usersLesons.Count(); i++)
+            if (User.Identity.IsAuthenticated)
             {
-                var lesson = usersLesons[i];
-                lesson.Content = lesson.Content.Take(3).ToList();
+                var userId = _userManager.GetUserAsync(User).Result.Id;
+                var usersLesons = await _context.Lessons
+                    .Include(e => e.Course)
+                    .Include(e => e.Content)
+                    .Where(e => e.Course.UserStudiedCourses.Id.Equals(userId))
+                    .ToListAsync();
+
+                for (int i = 0; i < usersLesons.Count(); i++)
+                {
+                    var lesson = usersLesons[i];
+                    lesson.Content = lesson.Content.Take(3).ToList();
+                }
+
+                usersLesons.Reverse();
+
+                return View(usersLesons);
             }
 
-            usersLesons.Reverse();
-
-            return View(usersLesons);
+            return View(new List<Lesson>());
         }
 
         public IActionResult Privacy() => View();
