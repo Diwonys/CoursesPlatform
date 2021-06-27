@@ -27,8 +27,7 @@ namespace CoursesPlatform.Models.PdfDocuments.Check
             _documentProvider.AddParagraph(CreationDate.ToString());
             _documentProvider.AddParagraph(Href);
             _documentProvider.AddParagraph(CompanyName);
-            _documentProvider.AddParagraph($"ИНН: {INN}");
-            _documentProvider.AddParagraph("Вид налогообложения: ОСН");
+            _documentProvider.AddParagraph($"УНП: {INN}");
             _documentProvider.AddParagraph(new string('-', 50));
         }
 
@@ -41,8 +40,8 @@ namespace CoursesPlatform.Models.PdfDocuments.Check
         public Stream GetDocument()
         {
             _documentProvider.AddParagraph(new string('-', 50));
-            _documentProvider.AddParagraph("Итог" + new string(' ', 15) + "= " + Outcome);
-            _documentProvider.AddParagraph("в т.ч. НДС%" + new string(' ', 15) + "= " + (float)Outcome / 100.0f * 20.0f);
+            _documentProvider.AddParagraph("Итог" + new string(' ', 15) + "= " + ((float)Outcome).ToString(".00"));
+            _documentProvider.AddParagraph("в т.ч. НДС%" + new string(' ', 15) + "= " + ((float)Outcome / 100.0f * 20.0f).ToString(".00"));
             return _documentProvider.Save();
         }
     }
