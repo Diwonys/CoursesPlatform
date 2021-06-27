@@ -1,0 +1,82 @@
+body .account-log-reg{
+    margin: 50px 400px !important;
+    height: auto;
+}
+body .account-log-reg  h2{
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+ }
+body .account-log-reg .container-prosuct{
+    font-style: normal;
+    font-weight: normal;
+    line-height: 101.18%;
+    color: #271403;
+    height: auto;
+}
+body .account-log-reg .container-prosuct .row{
+    border-radius: 8px;
+    border: 1px solid rgba(39, 20, 3, 0.5) !important;
+    padding: 30px 40px;
+    height: auto;
+    background: rgba(214, 204, 195, 0.1)
+}
+body .account-log-reg .container-prosuct .row .col{
+    width: 450px;
+    margin-right: 250px;
+}
+body .account-log-reg .container-prosuct .row .col:last-child{
+    margin-right: 0px;
+}
+body .account-log-reg .container-prosuct .row .col .form-group{
+    margin-bottom: 25px;
+}
+body .account-log-reg .container-prosuct .row .col .form-group:last-child{
+    margin-bottom: 0px;
+}
+body .account-log-reg .container-prosuct .row .col .form-group .text-lable{
+    font-size: 18px;
+    line-height: 33px;
+    margin-bottom: -2px;
+}
+body .account-log-reg .container-prosuct .row .col .form-group .text-lable-pick{
+    font-size: 18px;
+    line-height: 33px;
+    margin-bottom: -2px;
+
+    font-style: normal;
+    font-weight: normal;
+    line-height: 101.18%;
+    color: #271403;
+    height: auto;
+    
+}
+body .account-log-reg .container-prosuct .row .col .form-group .form-input{
+    font-size: 14px;
+    color: rgba(39, 20, 3, 0.7);
+    background: rgba(214, 204, 195, 0.2);
+    border: 1px solid rgba(39, 20, 3, 0.4);
+    height: 40px;
+    border-radius: 12px;
+    padding-right: 10px;
+}
+body .account-log-reg .btn-log{
+    margin: 20px 135px 10px 135px;
+}
+body .account-log-reg .btn-reg{
+    margin: 30px 115px;
+}
+body .account-log-reg .forgot-pass{
+    color: #271403 !important;
+    font-size: 14px;
+}
+body .account-log-reg .btn-outline-pink{
+    padding: 10px 45px;
+    border-radius: 30px;
+    color: #358579;
+    border: 1px solid #358579;
+}
+body .account-log-reg .btn-outline-pink:hover{
+    color: #FFF8F4;
+    background-color: #358579;
+}

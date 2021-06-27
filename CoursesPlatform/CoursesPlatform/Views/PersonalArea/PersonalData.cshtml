@@ -1,4 +1,4 @@
-Личные данные пользователя
+@* Личные данные пользователя
 
 <p>личные данные</p>
 
@@ -9,4 +9,48 @@
 
 <form method="post" asp-controller="Account" asp-action="Logout">
     <input type="submit" value="Выход" />
-</form>
+</form> *@
+
+<section class="create-product-container">
+
+    <h2>Личные данные</h2>
+    <div class="container-prosuct">
+
+        <div class="row">
+            <div class="col">
+                <div class="text-center">
+                    <h3> Email</h2>
+                    <h5> @User.Identity.Name </h5>
+                </div>
+
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <div class="block-btn-persdata">
+
+                        <div class="form-group d-inline">
+                            <a asp-action="Index" class="btn-persdata btn btn-sm btn-outline-primary">Назад</a>
+                        </div>
+                        <div class="form-group d-inline">
+                            <a asp-controller="Account" asp-action="ForgotPassword" class="btn-persdata btn btn-sm btn-success">Изменить пароль</a>
+                        </div>
+                        <div class="form-group d-inline">
+                            <input type="submit" value="Выход" class="btn-persdata btn btn-sm btn-outline-danger" />
+                            @* <input type="submit" value="Сохранить" class="btn-create btn" /> *@
+                        </div>
+                    </div>
+
+                    @* form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                            <a class="btn btn-sm btn-outline-success" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>
+                            <a class="btn btn-sm btn-outline-primary" asp-action="ChangePassword" asp-route-id="@user.Id" >Сменить
+                                пароль</a>
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                Заблокировать
+                            </button>
+                        </form>
+                    <a asp-action="Index" class="input-back">Назад</a> *@
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -3,7 +3,7 @@
     ViewBag.Title = "Список пользователей";
 }
  
-<a asp-action="Create">Добавить пользователя</a>
+@* <a asp-action="Create">Добавить пользователя</a>
  
 <table class="table">
     <tr><th>Email</th><th>Год</th><th></th></tr>
@@ -22,4 +22,50 @@
             </td>
         </tr>
     }
-</table>
+</table> *@
+
+<section class="table-roles container-myself-info">
+    <h2>Список ролей</h2>
+    <table class="table text-center">
+        <thead>
+            <tr class="mx-auto">
+                <th scope="col">
+                    Электронная почта
+                </th>
+                <th scope="col">
+                    Просмотр заказа
+                </th>
+            </tr>
+            <tr class="justTh">
+                <th colspan="6"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        @user.Email
+                    </th>
+                    <td>
+                        @* <form asp-action="Delete" asp-route-id="@role.Id" method="post">
+                            <button type="submit" class="btn btn-danger">
+                            Удалить
+                            </button>
+                            </form> *@
+                        <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                            <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>
+                            <a class="btn btn-sm btn-outline-primary" asp-action="ChangePassword" asp-route-id="@user.Id" >Сменить
+                                пароль</a>
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                Заблокировать
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="create-roles">
+        <a asp-action="Create" class="btn-add-user b-inline">Добавить пользователя</a>
+</section>

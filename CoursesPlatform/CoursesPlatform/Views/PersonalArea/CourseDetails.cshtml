@@ -4,62 +4,123 @@
     ViewData["Title"] = "Details";
 }
 
-<div>
+
+
+
+<section class="order-product-element">
+    <table class="order-product-container">
+        <tr>
+            <td class="one">
+                <div class="body-img-one">
+                    <div class="img-one">
+                        <img src="@Model.Image.GetContent()" class='card-img' alt="">
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <div class="text-container">
+                    <h2 class="text-title">@Model.Name</h2>
+                    <hr>
+                    <h6 class="text-collection">@Html.DisplayFor(model => model.CourseCategory.Name)</h6>
+                    <div class="text-content">
+                        <h5 class="text-cost">@Html.DisplayFor(model => model.Cost)<span>руб.коп.</span></h5>
+                        <h5 class="title-discrip">Описание товара</h5>
+                        <p class="discription">
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+                        <div class="date-product">
+                            @Html.DisplayFor(model => model.CreationDate)
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2 class="last-td">
+                @* <a asp-action="Index" class="btn btn-outline-primary">Вернуться назад</a> *@
+                <h4>Уроки</h4>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan=2 class="last-td">
+            </td>
+
+        </tr>
+        @foreach (var item in @Model.Lessons)
+        {
+            <tr class="lessons">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Topic)
+                </td>
+                <td>
+                    <div class="btn-lessons">
+                        <a asp-action="LessonDetails" asp-route-id="@item.Id" class="btn btn-outline-lessons">Перейти</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+</section>
+@*
+    <div>
     <h4>Course</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseCategory)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CourseCategory.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cost)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cost)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="@Model.Image.GetContent()" alt="">
-        </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Description)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Description)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.CourseCategory)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.CourseCategory.Name)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Cost)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Cost)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Image)
+    </dt>
+    <dd class="col-sm-10">
+    <img src="@Model.Image.GetContent()" alt="">
+    </dd>
     </dl>
-</div>
+    </div>
 
-<table class="table">
+    <table class="table">
     <thead>
-        <tr>
-            <th>
-                <p>Topic</p>
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+    <th>
+    <p>Topic</p>
+    </th>
+    <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in @Model.Lessons) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Topic)
-            </td>
-            <td>
-                <a asp-action="LessonDetails" asp-route-id="@item.Id">Перейти</a>
-            </td>
-        </tr>
-}
+    @foreach (var item in @Model.Lessons) {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Topic)
+    </td>
+    <td>
+    <a asp-action="LessonDetails" asp-route-id="@item.Id">Перейти</a>
+    </td>
+    </tr>
+    }
     </tbody>
-</table>
+    </table> *@

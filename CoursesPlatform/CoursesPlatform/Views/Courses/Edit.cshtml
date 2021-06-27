@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+@* <h1>Edit</h1>
 
 <h4>Course</h4>
 <hr />
@@ -30,12 +30,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" disabled/>
+                <input asp-for="CreationDate" class="form-control" disabled />
                 <span asp-validation-for="CreationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <img src="@Model.Image.GetContent()" />
-                
+
                 <input type="file" name="Image.FormFileImage" id="">
             </div>
             <div class="form-group">
@@ -52,8 +52,69 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
+
+
+<section class="create-product-container">
+    <h2>Добавление товара</h2>
+    <div class="container-prosuct">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Name" class="text-lable control-label">Название курса:</label>
+                        <input asp-for="Name" class="form-input form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseCategoryId" class="text-lable control-label">Категория курса:</label>
+                        <select asp-for="CourseCategoryId" class="form-input form-control"
+                            asp-items="ViewBag.CourseCategoryId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="text-lable control-label">Описание:</label>
+                        <input asp-for="Description" class="form-input form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cost" class="text-lable control-label">Стоимость курса:</label>
+                        <input asp-for="Cost" class="form-input form-control" />
+                        <span asp-validation-for="Cost" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CreationDate" class="text-lable control-label">Дата создания</label>
+                        <input asp-for="CreationDate" class="form-input form-control" disabled />
+                        <span asp-validation-for="CreationDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <div>
+                            <label for="Image" class="text-lable">Картинка для обложки</label>
+                            <div class="cover">
+                                <img src="@Model.Image.GetContent()" />
+                            </div>
+                            <input type="file" name="Image.FormFileImage" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-btn form-group">
+                <div class="d-inline">
+                    <a asp-action="Index" class="input-back">Вернуться назад</a>
+                </div>
+                <div class="d-inline">
+                    <input type="submit" value="Сохранить" class="btn-create btn" />
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

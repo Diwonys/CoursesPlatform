@@ -1,5 +1,5 @@
 ﻿@model CoursesPlatform.Models.ViewModels.LoginViewModel
-<h2>Вход в приложение</h2>
+@* <h2>Вход в приложение</h2>
 <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
@@ -22,4 +22,44 @@
     <div>
         <input type="submit" value="Войти" />
     </div>
-</form>
+</form> *@
+
+<section class="account-log-reg container-myself-info">
+
+    <h2>Войти в аккаунт</h2>
+    <div class="container-prosuct">
+
+        <div class="row">
+            <div class="col">
+
+
+
+                <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+                    <div asp-validation-summary="ModelOnly"></div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="text-lable control-label"></label>
+                        <input asp-for="Email" class="form-input  form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="text-lable control-label"></label>
+                        <input asp-for="Password" class="form-input  form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="RememberMe" />
+                        <label asp-for="RememberMe" class="text-lable control-label"></label>
+                    </div>
+                    <div class="btn-log">
+                        <input type="submit" value="Войти"  class="btn btn-outline-pink"/>
+                    </div>
+                    <div class="text-center">
+                        <a asp-controller="Account" asp-action="ForgotPassword" class="forgot-pass">Забыли пароль?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+@* 
 <h1>Details</h1>
 
 <div>
@@ -17,7 +17,7 @@
         {
             <img src="@item.GetContent()" />
         }
-        else if(item is Paragraph)
+        else if (item is Paragraph)
         {
             <p>@item.GetContent()</p>
         }
@@ -26,4 +26,41 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index" asp-route-courseId="@Model.CourseId">Back to List</a>
-</div>
+</div> *@
+
+
+<section class="container-orders create-product-container container-myself-info">
+    <div class="container-order back-blur">
+
+        <h2>Детали <span>@Model.Topic</span></h2>
+        <div class="lessons-content">
+            @foreach (var item in Model.Content)
+            {
+                @if (item is Image)
+                {
+                    <div class="body-img mx-auto">
+
+                        <div class="cover">
+                            <img src="@item.GetContent()" alt="" class="card-img">
+                        </div>
+                    </div>
+                }
+                else if (item is Paragraph)
+                {
+                    <p class="description">
+                        @item.GetContent()
+                    </p>
+                }
+            }
+        </div>
+        <div class="form-btn-details form-group">
+            <div class="d-inline">
+                <a asp-action="Index" asp-route-courseId="@Model.CourseId" class="input-back">Вернуться назад</a>
+            </div>
+            <div class="d-inline">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-create btn">Изменить</a>
+
+            </div>
+        </div>
+    </div>
+</section>

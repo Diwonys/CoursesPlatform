@@ -24,7 +24,7 @@ body {
     margin: 0 150px 60px 150px;
 }
 .block-btn-persdata{
-    margin: 30px 300px 10px 300px;
+    margin: 30px 230px 10px 230px;
 }
 .block-btn-persdata .btn-persdata{
     margin: 0 10px;
@@ -46,8 +46,8 @@ body {
 }
 
 .btn-create{
-    color: #ba7900 !important;
-    background-color:  #F6AF3D !important;
+    color: #fff !important;
+    background-color:  #358579 !important;
     
     font-size: 16px ;
     font-weight: 500;

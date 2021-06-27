@@ -1,26 +1,28 @@
 body .contact-container{
-    margin: 10px 200px 10px 200px;
+    margin: 10px 80px 50px 80px;
 }
 body .contact-container h2{
-    margin: 10px 0 50px 0px;
-    color: #ffffff;
+    margin: 10px 440px 50px 440px;
+    color: #000000;
+
+    text-align: center;
 }
 body .contact-container .map{
     margin: 80px 0 50px 0px;
 }
 body .contact-container .table{
     margin: 10px 0 50px 0px;
-    color: #ffffff;
+    color: #000000;
 }
 body .contact-container  .table{
     margin: 10px 0 50px 0px;
-    color: #ffffff;
+    color: #3a3a3a;
 }
 body .contact-container  .table tr td i {
     font-size: 45px;
     margin: 10px 0 15px;
     /* color: #ffc320; */
-    color: #F6AF3D
+    color: #358579
 }
 body .contact-container  .table tr td .title-info{
 
@@ -34,7 +36,7 @@ body .contact-container  .table tr td .title-info{
 
     /* Основной цвет текста */
 
-    color: #ffffff;
+    color: #000000;
 }
 body .contact-container  .table tr td p{
     font-style: normal;
@@ -43,7 +45,7 @@ body .contact-container  .table tr td p{
     line-height: 16px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
-    color: #ffffff;
+    color: #000000;
     margin-top: 15px;
 }
 /* new-container */
@@ -55,7 +57,7 @@ body .new-container{
 
 body .about-element{
     width: auto;
-    margin: 30px 144px 60px 144px;
+    margin: 80px 0;
 }
 body .about-element .container-fluid{
     width: auto;
@@ -69,12 +71,11 @@ body .about-element .container-fluid .text-container{
 }
 
 body .about-element .container-fluid .text-container .text-title span{
-    font-family: Poppins-Medium;
-    /* font-family: 'Montserrat', sans-serif !important; */
+    font-family: 'Montserrat', sans-serif !important;
     font-weight: normal;
     line-height: 101.18%;
     font-size: 70px;
-    -webkit-text-stroke: 1px #ffc320;
+    -webkit-text-stroke: 1px #358579;
     -webkit-text-fill-color: transparent;
     margin-bottom: 40px;
 }
@@ -93,7 +94,7 @@ body .about-element .container-fluid .text-container .text-content p{
     text-align: justify;
     letter-spacing: 0.015em;
 
-    color: rgba(250, 250, 250, 0.7);
+    color: rgba(12, 12, 12, 0.7);
 }
 body .about-element .container-fluid .text-container .text-content p span{
     font-family: Poppins-Medium;
@@ -103,7 +104,7 @@ body .about-element .container-fluid .text-container .text-content p span{
     line-height: 101.18%;
 
     text-align: justify;
-    color: rgba(250, 250, 250, 0.8);
+    color: rgba(12, 12, 12, 0.8);
 }
 
 /* контейнер картинки */

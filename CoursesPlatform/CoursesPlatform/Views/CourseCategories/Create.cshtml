@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+@* 
 <h1>Create</h1>
 
 <h4>CourseCategory</h4>
@@ -26,7 +26,42 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
+
+
+<section class="create-product-container">
+
+    <h2>Добавление категории</h2>
+    <div class="container-prosuct">
+
+        <div class="row">
+            <div class="col">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="text-lable control-label">Название категории</label>
+                        <input asp-for="Name" class="form-input form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    @* <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        </div> *@
+                    <div class="product-cat-btn">
+
+                        <div class="form-group d-inline">
+
+                            <a asp-action="Index" class="input-back">Вернуться назад</a>
+                        </div>
+                        <div class="form-group d-inline">
+                            <input type="submit" value="Добавить категорию" class="btn btn-create" />
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

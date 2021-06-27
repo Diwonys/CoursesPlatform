@@ -2,9 +2,9 @@
 @model CoursesPlatform.Models.Teacher.Course.Lesson
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
-
+@* 
 <h1>Edit</h1>
 
 <h4>Lesson</h4>
@@ -25,22 +25,19 @@
                 <div>
                     <div>
                         <input type="button" value="Remove" onclick="removeElement(this)">
-                        <label for="width">width</label>
-                        <input type="number" name="width" style="width: 50px;">
-                        <label for="height">height</label>
-                        <input type="number" name="height" style="width: 50px;">
+
 
                         <div>
                             @if (item is Image)
                             {
                                 <img src="@item.GetContent()" />
-                                <input type="text" class="inputElement" name="Elements[@i].ByteImage" 
-                                    value="@item.GetImageBase64String()" hidden />
+                                <input type="text" class="inputElement" name="Elements[@i].ByteImage"
+                            value="@item.GetImageBase64String()" hidden />
                                 <input type="file" name="Elements[@i].Image" id="">
                             }
                             else if (item is Paragraph)
                             {
-                                <textarea class="inputElement" name="Elements[@i].Text">@item.GetContent()</textarea>
+                                <textarea class="form-texterea form-control inputElement" cols="30" rows="10" name="Elements[@i].Text">@item.GetContent()</textarea>
                             }
                         </div>
                     </div>
@@ -51,7 +48,7 @@
 
 
             <input type="button" value="add Text"
-                onclick='addElementToPage(`<textarea class="inputElement" name="Elements[].Text"></textarea>`)'>
+                onclick='addElementToPage(`<textarea class="form-texterea inputElement" name="Elements[].Text"></textarea>`)'>
 
             <input type="button" value="add image"
                 onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[].Image"/>`)'>
@@ -69,7 +66,92 @@
 
 <div>
     <a asp-action="Index" asp-route-courseId="@Model.CourseId">Back to List</a>
-</div>
+</div> *@
+
+
+
+
+<section class="create-product-container">
+    <h2>Редактирование урока</h2>
+    <div class="container-prosuct lessons-content">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="Topic" class="text-lable control-label">Название курса:</label>
+                        <input type="text" name="Topic" value="@Model.Topic" class="form-input form-control">
+                    </div>
+
+                    @for (var i = 0; i < Model.Content.Count(); i++)
+                    {
+                        var item = Model.Content[i];
+                        <div>
+                            <div>
+                                <input type="button" value="Удалить" class="remove" onclick="removeElement(this)">
+
+
+                                <div>
+                                    @if (item is Image)
+                                    {
+                                        <div class="body-img mx-auto">
+
+                                            <div class="cover">
+                                                <img src="@item.GetContent()" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <input type="text" class="inputElement" name="Elements[@i].ByteImage"
+                                    value="@item.GetImageBase64String()" hidden />
+                                        <input type="file" name="Elements[@i].Image" id="">
+                                    }
+                                    else if (item is Paragraph)
+                                    {
+                                        <textarea class="form-texterea form-control inputElement" cols="30" rows="10" name="Elements[@i].Text">@item.GetContent()</textarea>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    <div id="anchorElement"></div>
+                    <div class="form-group">
+                        <label for="Description" class="text-lable control-label">Описание:</label>
+                        <input type="button" value="Добавить описание" for="Description" class="add"
+                            onclick='addElementToPage(`<textarea class="form-texterea form-control inputElement" name="Elements[].Text"></textarea>`)'>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label for="Image" class="text-lable">Картинка для обложки</label>
+                            <input type="button" value="Добавить картинку" class="add"
+                                onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[].Image"/>`)'>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <input type="number" name="courseId" value='@ViewData["CourseId"]' hidden>
+                            <input type="number" name="lessonId" value="@Model.Id" hidden>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-btn form-group">
+                <div class="d-inline">
+                    <a asp-action="Index" asp-route-courseId="@Model.CourseId" class="input-back">Вернуться
+                        назад</a>
+                </div>
+                <div class="d-inline">
+                    <input type="submit" value="Сохранить урок" class="btn-create btn" />
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+
 
 
 @section Scripts {
