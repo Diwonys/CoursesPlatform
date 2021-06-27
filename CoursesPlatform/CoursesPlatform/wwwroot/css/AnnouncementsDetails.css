@@ -1,0 +1,199 @@
+body .order-product-element{
+    width: auto;
+    height: auto;
+    border: 1px solid rgba(56, 56, 56, 0.5) !important;
+    padding: 40px 40px;
+    border-radius: 6px;
+}
+body .order-product-element .order-product-container{
+    /* padding: 54px 61px; */
+    width: auto;
+    vertical-align: middle;
+
+}
+body .order-product-element .order-product-container .last-td{
+    padding-top: 50px;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+body .order-product-element .order-product-container .lessons{
+    padding-top: 50px;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+body .order-product-element .order-product-container .lessons td{
+    padding-top: 50px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* body-img-one */
+
+body .order-product-element .order-product-container .body-img-one{
+    width:auto;
+    height: auto;
+    /* padding-right: 20px; */
+}
+body .order-product-element .order-product-container .one{
+    width:500px;
+    height: auto;
+    /* padding-right: 20px; */
+}
+body .order-product-element .order-product-container .body-img-one:last-child{
+    width: 500px;
+    height: auto;
+    padding-right: 0px;
+}
+body .order-product-element .order-product-container .body-img-one .img-one{
+    width: 500px;
+    height: 580px;
+}
+body  .order-product-element .order-product-container  .body-img-one .img-one .card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px !important;
+}
+
+/* ============text-container============ */
+body .order-product-element .order-product-container .text-container{
+    padding: 0 50px;
+}
+body .order-product-element .order-product-container .text-container hr{
+
+    background-color: rgba(202, 202, 202, 0.5);
+    margin-right: 50px;
+}
+body .order-product-element .order-product-container .text-container .text-title{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 101.18%;
+
+    color: #2a2a2a;
+}
+body .order-product-element .order-product-container .text-container .text-collection{
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: left;
+
+    color: rgba(47, 47, 47, 0.7);
+}
+body .order-product-element .order-product-container .text-container .text-cost{
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 101.18%;
+
+    color: rgb(0, 0, 0);
+
+    margin: 50px 170px 30px 170px;
+}
+body .order-product-element .order-product-container .text-container .text-cost span{
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 103.18%;
+    letter-spacing: 0.015em;
+    margin: 0 5px;
+
+    color: rgba(2, 2, 2, 0.7);
+}
+body .order-product-element .order-product-container .text-container .title-discrip{
+    font-style: normal;
+    font-weight: normal;
+    line-height: 16px;
+    text-decoration: underline;
+    /* Края доп меню */
+
+    color: rgba(0, 0, 0, 0.9);
+
+}
+body .order-product-element .order-product-container .text-container .discription, 
+body .order-product-element .order-product-container .text-container .date-product{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 16px;
+    margin: 20px 10px;
+    width: 500px;
+    /* Края доп меню */
+
+    color: rgba(0, 0, 0, 0.8);
+
+}
+body .order-product-element .order-product-container .text-container .discription span{
+    font-style: italic;
+    font-weight: normal;
+    text-decoration: underline;
+    font-size: 17px;
+    line-height: 16px;
+    margin: 20px 10px;
+    width: 500px;
+    /* Края доп меню */
+
+    color: rgba(0, 0, 0, 0.8);
+
+}
+
+/* btn-add-bag */
+.btn-add-bag{
+    margin: 40px 140px;
+}
+.btn-lessons{
+    margin: 0px 140px;
+}
+.btn-add-bag .form-group{
+    margin: 20px 0;
+
+    color: rgba(41, 41, 41, 0.8);
+}
+.btn-add-bag .form-group .lable-check{
+    font-weight: normal;
+    text-decoration: underline;
+    font-size: 14px;
+    line-height: 16px;
+    /* Края доп меню */
+
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+body .btn-add-bag .btn-outline-pink{
+    padding: 10px 45px;
+    border-radius: 30px;
+    color: #000000;
+    border: 1px solid #000000;
+}
+body .btn-add-bag .btn-outline-green{
+    padding: 10px 45px;
+    border-radius: 30px;
+    color: #1b9d8a;
+    border: 1px solid #1b9d8a;
+}
+body .btn-add-bag .btn-outline-pink:hover{
+    border: 1px solid #1b9d8a;
+    color: #ffffff;
+    background-color: #1b9d8a;
+}
+body .btn-lessons .btn-outline-lessons{
+    padding: 10px 45px;
+    border-radius: 30px;
+    color: #1b9d8a;
+    border: 1px solid #1b9d8a;
+}
+body .btn-lessons .btn-outline-lessons:hover{
+    border: 1px solid #1b9d8a;
+    color: #ffffff;
+    background-color: #1b9d8a;
+}

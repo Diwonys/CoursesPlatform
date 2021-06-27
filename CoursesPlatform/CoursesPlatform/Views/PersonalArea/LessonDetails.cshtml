@@ -1,19 +1,49 @@
 @using CoursesPlatform.Models.Teacher.Course.Elements
 @model CoursesPlatform.Models.Teacher.Course.Lesson
 
-<div>
+@* <div>
     <h4>Lesson</h4>
     <hr />
     <h2>@Model.Topic</h2>
     @foreach (var item in Model.Content)
     {
-        @if (item is Image)
-        {
-            <img src="@item.GetContent()" />
-        }
-        else if(item is Paragraph)
-        {
-            <p>@item.GetContent()</p>
-        }
+    @if (item is Image)
+    {
+    <img src="@item.GetContent()" />
     }
-</div>
+    else if(item is Paragraph)
+    {
+    <p>@item.GetContent()</p>
+    }
+    }
+    </div> *@
+
+
+
+<section class="container-orders create-product-container container-myself-info">
+    <div class="container-order back-blur">
+
+        <h2>Урок <span>@Model.Topic</span></h2>
+            <div class="lessons-content">
+                @foreach (var item in Model.Content)
+                {
+                        @if (item is Image)
+                        {
+                            <div class="body-img mx-auto">
+
+                                <div class="cover">
+                                    <img src="@item.GetContent()" alt="" class="card-img">
+                                </div>
+                            </div>
+                        }
+                        else if (item is Paragraph)
+                        {
+                            <p class="description">
+                                @item.GetContent()
+                            </p>
+                        }
+                }
+            </div>
+
+    </div>
+</section>

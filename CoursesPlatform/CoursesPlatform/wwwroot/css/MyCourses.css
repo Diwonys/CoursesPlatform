@@ -1,0 +1,192 @@
+body .container-orders{
+    margin: 50px 0px !important;
+    height: auto;
+    width: 1200px;
+}
+body .container-orders{
+    color: rgb(0, 0, 0);
+}
+body .container-order{
+    padding: 40px 20px;
+    border-radius: 12px;
+    border: 1px solid rgb(69, 69, 69);
+}
+body .table-order-index{
+    width: 100%;
+}
+body .table-order-index tr{
+    /* border-spacing: 10px 50px !important;  */
+    vertical-align: middle !important;
+
+}
+body .table-order-index .tr-btn td{
+    /* border-spacing: 10px 50px !important;  */
+    vertical-align: middle !important;
+    height: 100px !important;
+}
+
+body .table-order-index tr td:nth-child(2){
+    text-align: left;
+}
+body .table-order-index tr{
+    text-align: center;
+    color: #000000;
+
+}
+body .table-order-index tr td{
+    height: 300px;
+    padding: 10px 15px;
+    /* border: 1px solid rgba(61, 29, 0, 0.2); */
+}
+
+body .table-order-index .order{
+    width: 205px;
+    height: 250px;
+    margin-bottom: 40px;
+    border-radius: 8px !important;
+}
+body .table-order-index .order:last-child{
+    width: 205px;
+    height: 250px;
+    padding-right: 0px;
+}
+body .table-order-index .order .img-cover{
+    width: 240px;
+    height: 290px;
+}
+body .table-order-index .order .card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px !important;
+}
+
+body .table-order-index .text-title-product-name p{
+
+    /* padding: 0px 20px; */
+    
+    color: #000000;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
+}
+body .table-order-index .text-descript-product-name p{
+
+    /* padding: 0px 20px; */
+    
+    color: #000000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+
+}
+body .table-order-index .text-date-product-name p{
+
+    /* padding: 0px 20px; */
+    
+    color: #000000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+
+}
+body .table-order-index .text-title-cost p{
+    width: 80px;
+    
+    color: #000000;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+
+}
+body .table-order-index .btn-cir{
+    border-radius: 50px;
+    background: rgba(214, 204, 195, 0.2);
+
+    border: 0.2px solid rgba(255, 255, 255, 0.5);   
+    padding: 0.2px 9px;
+    color: #000000;
+}
+body .table-order-index .btn-count{
+    text-align: center;
+    background: rgba(214, 204, 195, 0);
+    border: 0px;
+    width: 5px;
+    color: #000000;
+}
+
+body .table-order-index .btn-outline-pink{
+    padding: 10px 45px;
+    border-radius: 30px;
+    color: #358579;
+    border: 1px solid #358579;
+}
+body .table-order-index .btn-outline-pink:hover{
+    color: #000000;
+    background-color: #358579;
+}
+
+
+body .table-order-index  tbody td:nth-child(1) {
+    width: auto;
+}
+body .table-order-index tbody td:nth-child(2){
+    width: 150px;
+}
+body .table-order-index  tbody td:nth-child(3){
+    width: 250px;
+}
+body .table-order-index tbody td:nth-child(4){
+    width: 150px;
+}
+body .table-order-index tbody td:nth-child(5) {
+    width: 320px;
+}
+
+body .table-order-index .btn-product:last-child, body .table-order-index-categories .btn-product:last-child{
+    margin-right: 15px;
+}
+body .table-order-index .btn-product:first-child, body .table-order-index-categories .btn-product:first-child{
+    margin-left: 15px;
+}
+body .table-order-index .btn-details, body .table-order-index-categories .btn-details{
+    margin-right: 15px;
+    color: #3A998E !important;
+}
+body .table-add-product  .table .btn-edit, body .table-add-product  .table-categories .btn-edit{
+    color: rgba(62, 79, 169, 0.8) !important;
+}
+body .table-order-index .btn-delete, body .table-order-index-categories .btn-delete{
+    color: #A93E4D !important;
+}
+
+body .table-order-index tbody tr:hover, body .table-order-index-categories tbody tr:hover{
+    color: #358579;
+}
+
+body .lessons-content{
+    margin-top: 60px;
+    
+}
+body .lessons-content .body-img{
+    width: 340px;
+    height: 390px;
+    
+}
+
+body .lessons-content .cover .img-cover{
+    width: 340px;
+    height: 390px;
+}
+body .lessons-content .cover .card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px !important;
+}
+body .lessons-content .description{
+    width: 500px;
+    margin: 40px;
+    border-bottom: 1px solid black;
+}

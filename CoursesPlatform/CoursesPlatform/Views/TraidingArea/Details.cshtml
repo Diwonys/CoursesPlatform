@@ -1,6 +1,6 @@
 @model CoursesPlatform.Models.Teacher.Course.Course
 
-<div>
+@* <div>
     <h4>Course</h4>
     <hr />
     <dl class="row">
@@ -43,4 +43,53 @@
     </dl>
 
     <a asp-action="Subscribe" asp-route-id="@Model.Id">Записаться на курс</a>
-</div>
+</div> *@
+
+
+
+
+<section class="order-product-element">
+    <table class="order-product-container">
+        <tr>
+            <td class="one">
+                <div class="body-img-one">
+                    <div class="img-one">
+                        <img src="@Model.Image.GetContent()" class='card-img' alt="">
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <div class="text-container">
+                    <h2 class="text-title">@Model.Name</h2>
+                    <hr>
+                    <h6 class="text-collection">@Html.DisplayFor(model => model.CourseCategory.Name)</h6>
+                    <div class="text-content">
+                        <h5 class="text-cost">@Html.DisplayFor(model => model.Cost)<span>руб.коп.</span></h5>
+                        <h5 class="title-discrip">Описание товара</h5>
+                        <p class="discription">
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+                        <div class="date-product">
+                            @Html.DisplayFor(model => model.CreationDate)
+                        </div>
+                        <div class="btn-add-bag">
+                            @* <form asp-controller="Orders" asp-action="Add" method="POST">
+                                <input type="number" name="productId" value="@Model.Id" hidden>
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-pink">Изменить</a>
+
+                            </form> *@
+                                <a asp-action="Subscribe" asp-route-id="@Model.Id" class="btn btn-outline-green">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="last-td">
+                <a asp-action="Index" class="btn btn-outline-primary">Вернуться назад</a>
+            </td>
+        </tr>
+    </table>
+
+</section>

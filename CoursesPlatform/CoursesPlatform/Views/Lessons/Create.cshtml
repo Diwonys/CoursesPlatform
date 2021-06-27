@@ -3,42 +3,92 @@
 @{
     ViewData["Title"] = "Create";
 }
+@*
+    <h1>Create</h1>
 
-<h1>Create</h1>
-
-<h4>Lesson</h4>
-<hr />
-<div class="row">
+    <h4>Lesson</h4>
+    <hr />
+    <div class="row">
     <div class="col-md-4">
+    <form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div>
+    <label for="Topic">Topic</label>
+    <input type="text" name="Topic">
+    </div>
+
+    <div id="anchorElement"></div>
+
+    <input type="button" value="add Text"
+    onclick='addElementToPage(`<textarea class="inputElement" name="Elements[].Text"></textarea>`)'>
+
+    <input type="button" value="add image"
+    onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[].Image"/>`)'>
+
+    <div>
+    <input type="number" name="courseId" value='@ViewData["CourseId"]' hidden>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+    </form>
+    </div>
+    </div>
+
+    <div>
+    <a asp-action="Index" asp-route-courseId='@ViewData["CourseId"]'>Back to List</a>
+    </div>
+*@
+
+
+<section class="create-product-container">
+    <h2>Добавление урока</h2>
+    <div class="container-prosuct">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="Topic" class="text-lable control-label">Название курса:</label>
+                        <input for="Topic" type="text" class="form-input form-control" />
+                    </div>
+                    <div id="anchorElement"></div>
+                    <div class="form-group">
+                        <label for="Description" class="text-lable control-label">Описание:</label>
+                        <input type="button" value="Добавить описание" for="Description" class="add"
+                            onclick='addElementToPage(`<textarea class="form-texterea form-control inputElement" name="Elements[].Text"></textarea>`)'>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label for="Image" class="text-lable">Картинка для обложки</label>
+                            <input type="button" value="Добавить картинку" class="add"
+                                onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[].Image"/>`)'>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <input type="number" name="courseId" value='@ViewData["CourseId"]' hidden>
+                        </div>
+                    </div>
 
-            <div>
-                <label for="Topic">Topic</label>
-                <input type="text" name="Topic">
+                </div>
             </div>
+            <div class="form-btn form-group">
+                <div class="d-inline">
+                    <a asp-action="Index" asp-route-courseId='@ViewData["CourseId"]'class="input-back">Вернуться назад</a>
+                </div>
+                <div class="d-inline">
+                    <input type="submit" value="Добавить урок" class="btn-create btn" />
 
-            <div id="anchorElement"></div>
-            
-            <input type="button" value="add Text"
-                onclick='addElementToPage(`<textarea class="inputElement" name="Elements[].Text"></textarea>`)'>
-
-            <input type="button" value="add image"
-                onclick='addElementToPage(`<input class="inputElement" type="file" name="Elements[].Image"/>`)'>
-
-            <div>
-                <input type="number" name="courseId" value='@ViewData["CourseId"]' hidden>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index" asp-route-courseId='@ViewData["CourseId"]'>Back to List</a>
-</div>
+</section>
+
+
 
 
 @section Scripts {

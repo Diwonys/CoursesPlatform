@@ -1,0 +1,127 @@
+body .table-roles{
+    margin: 10px 120px 80px 120px;
+    width: 1000px;
+}
+body .table-roles h2{
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(0, 0, 0);
+}
+body .table-roles .create-product {
+    margin: 40px 0px;
+    width: 1000px;
+}
+body .table-roles .btn-create-product{
+    padding: 16px 55px;
+    border: 1px solid #358579;
+    border-radius: 30px;
+    width: auto;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 107.9%;
+
+    letter-spacing: 0.02em;
+    color: #358579;
+}
+
+body .table-roles .table thead{
+    font-style: normal;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center !important;
+    color: #000000;
+}
+body .table-roles .table thead tr:last-child, body .table-roles .table-categories thead tr:last-child{
+    height: 40px;
+    border: 1px solid #000000;
+}
+body .table-roles .table tbody, body .table-roles .table-categories tbody {
+    color: #272727;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: left;
+}
+body .table-roles .table tbody tr, .table-roles .table thead tr, body .table-roles .table-categories tbody tr, .table-roles .table-categories thead tr{
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+body .table-roles .table .table-thead tr th, body .table-roles .table-categories .table-thead tr th{
+    font-weight: normal !important;
+    text-align: center;
+    padding: 20px 31px;
+}
+body .table-roles .table .btn-product, body .table-roles .table-categories .btn-product{
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 22px;
+    text-decoration-line: underline;
+    color: red;
+    margin-right: 10px;
+}
+body .table-roles .table .btn-product:last-child, body .table-roles .table-categories .btn-product:last-child{
+    margin-right: 15px;
+}
+body .table-roles .table .btn-product:first-child, body .table-roles .table-categories .btn-product:first-child{
+    margin-left: 15px;
+}
+body .table-roles .table .btn-details, body .table-roles .table-categories .btn-details{
+    color: #3A998E !important;
+}
+body .table-roles  .table .btn-edit, body .table-roles  .table-categories .btn-edit{
+    color: rgba(62, 79, 169, 0.8) !important;
+}
+body .table-roles .table .btn-delete, body .table-roles .table-categories .btn-delete{
+    color: #358579 !important;
+}
+
+body .table-roles .table tbody tr:hover, body .table-roles .table-categories tbody tr:hover{
+    color: #358579;
+}
+
+.table-roles td, .table-roles th  {
+    text-align: center;
+}
+body .table-roles .table tbody tr{
+    font-size: 22px !important;
+}
+
+body .table-roles .btn-create-product, body .table-roles .btn-add-user, body .btn-save-edit-user{
+    padding: 16px 55px;
+    border: 1px solid #358579;
+    border-radius: 30px;
+    width: auto;
+
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 107.9%;
+    
+    letter-spacing: 0.02em;
+    color: #358579;
+    margin-right: 20px;
+}
+
+body .table-roles .create-roles{
+    margin: 40px 200px 0 200px;
+}
+
+body .btn-add-user{
+    margin: 40px 119px;
+}
+body .btn-save-edit-user{
+    margin: 10px 0px;
+}
+
+body .container-prosuct .edit-user{
+    margin: 50px 340px 20px 340px;
+    font-size: 18px;
+}
+
+
+

@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+@* 
 <h1>Details</h1>
 
 <div>
@@ -21,4 +21,38 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
+
+
+<section class="create-product-container">
+
+    <h2>Детали категории</h2>
+    <div class="container-prosuct">
+
+        <div class="row">
+            <div class="col">
+
+
+                <dl class="row d-flex justify-content-center">
+                    <dt class="col-sm-6 text-center">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-sm-6 text-left">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                </dl>
+                <div class="product-cat-btn">
+
+                    <div class="form-group d-inline">
+                        <a asp-action="Index" class="input-back">Вернуться назад</a>
+                    </div>
+                    <div class="form-group d-inline">
+                        @* <input type="submit" value="Сохранить" class="btn-create btn" /> *@
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-create btn">Изменить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

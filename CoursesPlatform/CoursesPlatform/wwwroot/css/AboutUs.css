@@ -2,20 +2,20 @@ body .menu-nav{
     margin: 20px 0px;
 }
 body .menu-nav .nav-link{
-    color: #ffffff !important;
+    color: #000000 !important;
     margin: 0 30px; 
     font-size: 16px;
 
-    border: 0.1px solid rgba(255, 255, 255, 0.8)!important;
+    border: 0.1px solid rgba(0, 0, 0, 0.8)!important;
 }
 .nav-pills .nav-link.active, .nav-pills>.nav-link{
-    border: 0.1px solid rgba(221, 221, 221, 0.8)!important;
+    border: 0.1px solid rgba(0, 0, 0, 0.8)!important;
     background-color: rgba(187, 187, 187, 0) !important; 
 }
 
 /* rule-container */
 body .rule-container{
-    margin: 50px 200px ;
+    margin: 50px 150px ;
 }
 body .rule-container .rule-element h2{
 
@@ -24,7 +24,7 @@ body .rule-container .rule-element h2{
     font-size: 32px;
     line-height: 37px;
     
-    color: #ffffff;
+    color: #000000;
 
     margin-bottom: 50px;
 }
@@ -35,7 +35,7 @@ body .rule-container .rule-element h3{
     font-size: 28px;
     line-height: 37px;
     
-    color: #ffffff;
+    color: #000000;
     margin: 20px 0 10px 0;
 }
 body .rule-container .rule-element h5{
@@ -45,7 +45,7 @@ body .rule-container .rule-element h5{
     font-size: 16px;
     line-height: 37px;
     
-    color: #ffffff;
+    color: #000000;
     margin: 5px 0;
 }
 body .rule-container .rule-element h2 span{
@@ -56,10 +56,10 @@ body .rule-container .rule-element h2 span{
     line-height: 28px;
     font-feature-settings: 'pnum' on, 'onum' on;
 
-    color: #ffffff;
+    color: #000000;
 }
 body .rule-container .rule-element table{
-    color: #ffffff;
+    color: #000000;
     padding: 20px;
 }
 body .rule-container .rule-element table th{
@@ -68,17 +68,17 @@ body .rule-container .rule-element table th{
     font-size: 21px;
     line-height: 100%;
     letter-spacing: 0.03em;
-    color: #ffffff;
+    color: #000000;
     
     height: 50px;
     padding-left: 20px;
     border-bottom: 1px solid rgba(234, 234, 234, 0.5);
 }
 body .rule-container .rule-element table td{
-    border-bottom: 1px solid rgba(234, 234, 234, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 body .rule-container .rule-element table td:first-child, body .rule-container .rule-element table th:first-child{
-    border-right: 1px solid rgba(234, 234, 234, 0.5);
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
 }
 body .rule-container .rule-element table tbody .text-descript{
     padding: 10px;
@@ -92,7 +92,7 @@ letter-spacing: 0.03em;
 
 /* Текст */
 
-color: #cecece;
+color: #2b2b2b;
 }
 body .rule-container .rule-element .row .col .text-descript{
     padding: 10px;
@@ -106,5 +106,5 @@ letter-spacing: 0.03em;
 
 /* Текст */
 
-color: #cecece;
+color: #333333;
 }

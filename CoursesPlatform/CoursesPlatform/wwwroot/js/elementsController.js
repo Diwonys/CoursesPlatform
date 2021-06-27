@@ -1,7 +1,7 @@
 function addElementToPage(element) {
 
     var sizeControlElement = `  <div>
-                                    <input type="button" value="Remove" onclick="removeElement(this)">
+                                    <input type="button" value="Удалить" class="remove" onclick="removeElement(this)">
                                 </div>`;
 
     var elementContainer = document.createElement("div");

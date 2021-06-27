@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@* 
 <h1>Index</h1>
 
 <p>
@@ -51,4 +51,60 @@
         </tr>
 }
     </tbody>
-</table>
+</table> *@
+<section class="table-add-product">
+    <div class="create-product">
+            <a asp-action="Create" class="btn-create-product">Добавить товар</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr class="mx-auto">
+                <th scope="col">
+                    Название товара
+                </th>
+                <th scope="col">
+                    Категория
+                </th>
+                <th scope="col">
+                    Описание
+                </th>
+                <th scope="col">
+                    Дата создания
+                </th>
+                <th scope="col"></th>
+            </tr>
+            <tr class="justTh">
+                <th colspan="6"></th>
+            </tr>
+        
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseCategory.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        <a asp-action="Index" asp-controller="Lessons" asp-route-courseId="@item.Id" class="btn-product btn-lessons">Уроки</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn-details btn-product">Просмотр</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-edit btn-product">Редактирование</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-delete btn-product">Удаление</a>
+                    </td>
+                </tr>
+
+               
+            }
+        </tbody>
+    </table>
+
+</section>

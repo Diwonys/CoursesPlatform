@@ -1,0 +1,165 @@
+
+body .create-product-container{
+    margin: 20px 100px !important;
+    height: auto;
+    width: 1050px;
+}
+body .create-product-container  h2{
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #000000;
+ }
+body .create-product-container .container-prosuct{
+    
+    font-style: normal;
+    font-weight: normal;
+    line-height: 101.18%;
+    color: #000000;
+    height: auto;
+}
+body .create-product-container .container-prosuct .row{
+    border-radius: 8px;
+    border: 1px solid rgba(8, 8, 8, 0.5) !important;
+    padding: 30px 40px;
+    height: auto;
+}
+body .create-product-container .container-prosuct .row .col{
+    width: 450px;
+    margin-right: 250px;
+}
+body .create-product-container .container-prosuct .row .col:last-child{
+    margin-right: 0px;
+}
+body .create-product-container .container-prosuct .row .col .form-group{
+    margin-bottom: 25px;
+}
+body .create-product-container .container-prosuct .row .col .form-group .cover{
+    width: 288px;
+    height: 360.44px;
+    margin-bottom: 20px;
+}
+body  .create-product-container .container-prosuct .row .col .form-group .cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px !important;
+}
+body .create-product-container .container-prosuct .row .col .form-group:last-child{
+    margin-bottom: 0px;
+}
+body .create-product-container .container-prosuct .row .col .form-group .text-lable{
+    font-size: 18px;
+    line-height: 33px;
+    margin-bottom: -2px;
+}
+body .create-product-container .container-prosuct .row .col .form-group .text-lable-pick{
+    font-size: 18px;
+    line-height: 33px;
+    margin-bottom: -2px;
+
+    font-style: normal;
+    font-weight: normal;
+    line-height: 101.18%;
+    color: #000000;
+    height: auto;
+    
+}
+body .create-product-container .container-prosuct .row .col .form-group .form-input{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(214, 204, 195, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 40px;
+    border-radius: 12px;
+    padding-right: 10px;
+}
+body .create-product-container .container-prosuct .row .col .form-group .form-texterea{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(214, 204, 195, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+
+    border-radius: 12px;
+    padding-right: 10px;
+}
+.input-file{
+    margin-bottom: 7px;
+}
+.input-file:first-child{
+    margin-top:15px;
+}
+.form-btn{
+    margin: 40px 280px;
+    width: auto;
+}
+.form-btn-details{
+    margin: 40px 350px;
+    width: auto;
+}
+.add{
+    color: #358579;
+    font-size: 14px;
+    border:2px solid #358579;
+    padding: 12px 30px;
+    font-weight: 500;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.remove{
+    color: #853535;
+    font-size: 14px;
+    border:2px solid #853535;
+    padding: 12px 30px;
+    font-weight: 500;
+    border-radius: 20px;
+    text-decoration: none;
+    margin: 10px 0px;
+}
+.input-back{
+    color: #358579;
+    font-size: 14px;
+    border:2px solid #358579;
+    padding: 12px 45px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-right: 50px;
+}
+body .create-product-container .container-prosuct .form-group{
+    margin-bottom: 25px;
+}
+
+body .create-product-container .container-prosuct .row .col .form-group:last-child{
+    margin-bottom: 0px;
+}
+body .create-product-container .container-prosuct .form-group .text-lable{
+    font-size: 18px;
+    line-height: 33px;
+    margin-bottom: -2px;
+}
+body .create-product-container .container-prosuct .form-group .text-lable-pick{
+    font-size: 18px;
+    line-height: 33px;
+    margin-bottom: -2px;
+
+    font-style: normal;
+    font-weight: normal;
+    line-height: 101.18%;
+    color: #000000;
+    height: auto;
+    
+}
+body .create-product-container .container-prosuct .form-group .form-input{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(214, 204, 195, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 40px;
+    border-radius: 12px;
+    padding-right: 10px;
+}
+

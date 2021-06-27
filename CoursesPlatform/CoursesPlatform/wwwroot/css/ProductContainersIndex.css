@@ -1,0 +1,132 @@
+body .table-add-product{
+    margin: 10px 0px 80px 0px;
+    width: 1200px;
+}
+body .table-add-product .create-product {
+    margin: 40px 0px;
+    width: auto;
+}
+body .table-add-product .btn-create-product{
+    padding: 16px 55px;
+    border: 2px solid #358579;
+    border-radius: 30px;
+    width: auto;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 107.9%;
+
+    letter-spacing: 0.02em;
+    color: #358579;
+    margin-right: 20px;
+}
+body .table-add-product .table, body .table-add-product .table-categories{
+  
+    padding: 40px 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+body .table-add-product .table thead, body .table-add-product .table-categories thead{
+    padding: 31px 20px;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 33px;
+    text-align: left !important;
+    color: rgb(0, 0, 0);
+}
+body .table-add-product .table tbody td:first-child {text-align: center;}
+body .table-add-product .table thead tr:last-child, body .table-add-product .table-categories thead tr:last-child{
+    height: 40px;
+}
+body .table-add-product .table tbody, body .table-add-product .table-categories tbody {
+    color: rgb(45, 45, 45);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+}
+body .table-add-product .table tbody tr, .table-add-product .table thead tr, body .table-add-product .table-categories tbody tr, .table-add-product .table-categories thead tr{
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+body .table-add-product .table tbody td:nth-child(1) {
+    width: auto;
+}
+body .table-add-product .table tbody td:nth-child(2){
+    width: 200px;
+}
+body .table-add-product .table tbody td:nth-child(3){
+    width: 200px;
+}
+body .table-add-product .table tbody td:nth-child(4){
+    width: 200px;
+}
+body .table-add-product .table tbody td:nth-child(5) {
+    width: 380px;
+}
+body .table-add-product .table .table-thead tr th, body .table-add-product .table-categories .table-thead tr th{
+    font-weight: normal !important;
+    text-align: center;
+    padding: 20px 31px;
+}
+body .table-add-product .table .btn-product, body .table-add-product .table-categories .btn-product{
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    text-decoration-line: underline;
+    color: red;
+    margin-right: 10px;
+}
+body .table-add-product .table .btn-product:last-child, body .table-add-product .table-categories .btn-product:last-child{
+    margin-right: 15px;
+}
+body .table-add-product .table .btn-product:first-child, body .table-add-product .table-categories .btn-product:first-child{
+    margin-left: 15px;
+}
+body .table-add-product .table .btn-details, body .table-add-product .table-categories .btn-details{
+    color: #3A998E !important;
+}
+body .table-add-product  .table .btn-edit, body .table-add-product  .table-categories .btn-edit{
+    color: rgba(62, 79, 169, 0.8) !important;
+}
+body .table-add-product .table .btn-delete, body .table-add-product .table-categories .btn-delete{
+    color: #A93E4D !important;
+}
+body .table-add-product .table .btn-lessons, body .table-add-product .table-categories .btn-lessons{
+    color: #ffd900 !important;
+    font-size: 16px;
+}
+
+body .table-add-product .table tbody tr:hover, body .table-add-product .table-categories tbody tr:hover{
+    color: #358579;
+}
+
+/* ---------------table-categories----------------- */
+
+
+body .table-add-product .table-categories thead th:nth-child(1) {
+    width: 1094px;
+    padding: 10px 30px;
+}
+body .table-add-product .table-categories thead th {
+    border-bottom: 1px solid rgba(20, 20, 20, 0.2);
+  
+}
+body .table-add-product .table-categories tbody td:nth-child(1) {
+    width: 1094px;
+    padding: 8px 30px;
+}
+body .table-add-product .table-categories tbody td:nth-child(2){
+    width: 800px;
+    padding: 8px 30px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.product-cat-btn{
+    margin: 10px 200px;
+}
+.product-edit-btn{
+    margin: 10px 200px;
+}

@@ -1,6 +1,6 @@
 @model IEnumerable<CoursesPlatform.Models.Users.User>
 
-<h2>Список пользователей</h2>
+@* <h2>Список пользователей</h2>
 <table class="table">
     @foreach (var user in Model)
     {
@@ -11,4 +11,38 @@
             </td>
         </tr>
     }
-</table>
+</table> *@
+
+<section class="table-roles container-myself-info">
+    <h2>Список пользователей</h2>
+    <table class="table text-center">
+        <thead>
+            <tr class="mx-auto">
+                <th scope="col">
+                    Электронная почта
+                </th>
+                <th scope="col">
+                    Управление
+                </th>
+            </tr>
+            <tr class="justTh">
+                <th colspan="6"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        @user.Email
+                    </th>
+                    <td>
+                        <a class="btn btn-sm btn-outline-warning" asp-action="Edit" asp-route-userid="@user.Id">Права
+                            доступа</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

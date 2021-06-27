@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
+@* 
 <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -42,4 +42,57 @@
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-</div>
+</div> *@
+
+
+
+<section class="order-product-element">
+    <h2 class="text-center"> Удаление товар</h2>
+    <h4 class="text-center mb-5">Вы действительно хотетите удалить товар?</h4>
+    <table class="order-product-container mt-5">
+        <tr>
+            <td>
+                <div class="text-container">
+                    <h2 class="text-title">@Html.DisplayFor(model => model.Name)</h2>
+                    <hr>
+                    <h6 class="text-collection">@Html.DisplayFor(model => model.CourseCategory.Name)</h6>
+                    <div class="text-content">
+                        <h5 class="text-cost">@Html.DisplayFor(model => model.Cost)<span>руб.коп.</span></h5>
+                        <h5 class="title-discrip">Описание товара</h5>
+                        <p class="discription">
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+                        <div class="date-product">
+                            @Html.DisplayFor(model => model.CreationDate)
+                        </div>
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="product-cat-btn">
+                    <form asp-action="Delete">
+
+                        <div class="form-group d-inline mr-5 ml-5">
+                            <a asp-action="Index" class="btn btn-outline-primary">Вернуться назад</a>
+                        </div>
+                        <div class="form-group d-inline">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="submit" value="Удалить" class="btn btn-danger" />
+                        </div>
+
+                    </form>
+
+                    @* <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                        <a asp-action="Index">Back to List</a>
+                    </form> *@
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</section>

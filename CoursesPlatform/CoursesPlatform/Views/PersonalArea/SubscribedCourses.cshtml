@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-
+@* 
 <table class="table">
     <thead>
         <tr>
@@ -46,4 +46,73 @@
             </tr>
         }
     </tbody>
-</table>
+</table> *@
+
+
+
+<section class="container-orders create-product-container container-myself-info">
+    <div class="container-order back-blur">
+
+        <table class="table-order-index ">
+            <thead>
+                <tr class="mx-auto">
+                    <th scope="col">
+                        Картинка
+                    </th>
+                    <th scope="col">
+                        Название курса
+                    </th>
+                    <th scope="col">
+                        Описание
+                    </th>
+                    <th scope="col">
+                        Дата создания
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+                <tr class="justTh">
+                    <th colspan="4"></th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="order">
+                                <div class="img-cover">
+                                    <img src="@item.Image.GetContent()" alt="" class="card-img card-img-top">
+                                </div>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="text-title-product-name">
+                                <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-descript-product-name">
+                                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-date-product-name">
+                                <p>@Html.DisplayFor(modelItem => item.CreationDate)</p>
+                            </div>
+                        </td>
+                        
+                        <td>
+                            <a asp-action="CourseDetails" asp-route-id="@item.Id" class="btn-details btn-product">Перейти</a>
+                            <a class=" btn-delete btn-product" asp-action="UnSubscribe" asp-route-id="@item.Id">Покинуть курс</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</section>

@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@* 
 <h1>Index</h1>
 
 <p>
@@ -32,4 +32,42 @@
         </tr>
 }
     </tbody>
-</table>
+</table> *@
+
+
+<section class="table-add-product container-myself-info">
+    <div class="create-product">
+            <a  asp-action="Create" asp-route-coureseId='@ViewData["CourseId"]' class="btn-create-product">Добавить урок</a>
+    </div>
+    <table class="table-categories">
+        <thead>
+            <tr class="mx-auto">
+                <th scope="col">
+                    Название урока
+                </th>
+                <th scope="col">
+                    
+                </th>
+            </tr>
+            <tr class="justTh">
+                <th colspan="6"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) 
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Topic)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-details btn-product">Редактирование</a> 
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn-edit btn-product">Просмотр</a> 
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-delete btn-product">Удаление</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</section>

@@ -1,26 +1,26 @@
-<h2>Личный кабинет</h2>
+@* <h2>Личный кабинет</h2>
 
-@if(User.IsInRole("employee"))
+@if (User.IsInRole("employee"))
 {
     <h3>Рабочий</h3>
 }
-@if(User.IsInRole("teacher"))
+@if (User.IsInRole("teacher"))
 {
     <h3>Преподаватель</h3>
     <div>
         <a asp-action="Index" asp-controller="Courses">Курсы</a>
         <a asp-action="Index" asp-controller="CourseCategories">Категории курсов</a>
-    </div>   
+    </div>
 }
-@if(User.IsInRole("admin"))
+@if (User.IsInRole("admin"))
 {
     <h3>Администрирование</h3>
     <div>
         <a asp-action="Index" asp-controller="Roles">Роли</a>
-    </div>   
+    </div>
     <div>
         <a asp-action="Index" asp-controller="Users">Пользователи</a>
-    </div>   
+    </div>
     <hr>
 }
 
@@ -28,4 +28,71 @@
 <a asp-controller="PersonalArea" asp-action="SubscribedCourses">Мои курсы</a>
 <form method="post" asp-controller="Account" asp-action="Logout">
     <input type="submit" value="Выход" />
-</form>
+</form> *@
+
+
+
+<section class="create-product-container container-myself-info ">
+
+    <h2>@ViewData["Title"]</h2>
+    <div class="container-prosuct">
+
+        <div class="row back-blur">
+            <div class="col">
+                <h3 class="text-center">Личный кабинет</h3>
+                <ul class=" block-btn-persarea nav justify-content-center">
+                    <li class="nav-item">
+                        <a asp-controller="PersonalArea" asp-action="SubscribedCourses"
+                            class="btn-persdata btn btn-outline-success nav-link">Мои курсы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="PersonalArea" asp-action="PersonalData"
+                            class="btn-persdata btn btn-outline-primary nav-link">Личные данные</a>
+                    </li>
+                </ul>
+                <ul class=" block-btn-persarea nav justify-content-center">
+                    <li class="nav-item">
+                        <form method="post" asp-controller="Account" asp-action="Logout">
+                            <input type="submit" class="btn-persdata btn btn-danger nav-link" value="Выход" />
+                        </form>
+                    </li>
+
+                </ul>
+
+
+                <hr>
+                @if (User.IsInRole("admin"))
+                {
+                    <h3 class="text-center">Администрирование</h3>
+
+                    <ul class=" block-btn-persarea nav justify-content-center">
+                        <li class="nav-item">
+                            <a asp-action="Index" asp-controller="Roles" class="btn-persdata btn btn-info nav-link">Роли</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="Index" asp-controller="Users"
+                            class="btn-persdata btn btn-warning nav-link">Пользователи</a>
+                        </li>
+                    </ul>
+                    <hr>
+                }
+                @if (User.IsInRole("teacher"))
+                {
+                    <h3 class="text-center">Преподаватель</h3>
+                    <ul class=" block-btn-persarea nav justify-content-center">
+                        <li class="nav-item">
+                            <a asp-action="Index" asp-controller="Courses"
+                            class="btn-persdata btn btn-outline-primary nav-link">Курсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="Index" asp-controller="CourseCategories"
+                            class="btn-persdata btn btn-outline-warning nav-link">Категории</a>
+                        </li>
+                    </ul>
+                    <hr>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
